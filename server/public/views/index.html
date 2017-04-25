@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Task App</title>
+        <link rel="stylesheet" href="/vendors/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/styles/style.css">
+
+        <script type="text/javascript" src="/vendors/angular.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+        <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/loginController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/NewAccountController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/ChartController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/userController.js"></script>
+        <script src="/vendors/chart.js/dist/Chart.min.js"></script>
+
+
+    </head>
+
+    <body>
+      <header ng-include="'/views/templates/header.html'"></header>
+
+      <main ng-view></main>
+
+    </body>
+</html>

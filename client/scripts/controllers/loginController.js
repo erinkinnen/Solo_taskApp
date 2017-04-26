@@ -7,15 +7,6 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
     };
     $scope.message = '';
 
-    // $scope.account = {
-    //   name: ''
-    //   // address: '',
-    //   // city: '',
-    //   // state: '',
-    //   // zip: ''
-    // }
-
-
     $scope.login = function() {
       if($scope.user.username == '' || $scope.user.password == '') {
         $scope.message = "Enter your username and password!";
@@ -34,34 +25,4 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
         });
       }
     }
-
-    $scope.registerUser = function() {
-      if($scope.user.username == '' || $scope.user.password == '') {
-        $scope.message = "Choose a username and password!";
-      } else {
-        // var completeAccount = {user: $scope.user, account: $scope.account};
-        console.log('sending to USER to server...', $scope.user);
-        $http.post('/register', $scope.user).then(function(response) {
-          console.log('USER success');
-          $location.path('/home');
-        },
-        function(response) {
-          console.log('USER error');
-          $scope.message = "Please try again."
-        });
-      }
-      // if($scope.account.name == '') {
-      //   $scope.message = "Choose an accoount name";
-      // } else {
-      //   console.log('sending to ACCOUNT to server...', $scope.account);
-      //   $http.post('/register', $scope.account).then(function(response) {
-      //     console.log('ACCOUNT success');
-      //     $location.path('/home');
-      //   },
-      //   function(response) {
-      //     console.log('ACCOUNT error');
-      //     $scope.message = "Please try again."
-      //   });
-      // }
-    }//end of registerUser
 }]);

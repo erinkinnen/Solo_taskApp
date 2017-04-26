@@ -11,7 +11,9 @@ module.exports = function(grunt){
       html: {
         expand: true,
         cwd: 'client/views/',
-        src: ['index.html'],
+        src: ['index.html',
+              'partials/*.html',
+              'templates/*.html'],
         dest: 'server/public/views/'
       },
       css: {
@@ -20,18 +22,26 @@ module.exports = function(grunt){
         src: ['style.css'],
         dest: 'server/public/styles/'
       },
-      angular: {
+      scripts: {
         expand: true,
-        cwd: 'node_modules/angular/',
-        src: ['angular.js'],
-        dest: 'server/public/vendors/angular/'
-      },
-      bootstrap: {
-        expand: true,
-        cwd: 'node_modules/bootstrap/dist/',
-        src: ['css/*.css', 'fonts/*.*', 'js/*.*'],
-        dest: 'server/public/vendors/bootstrap/'
+        cwd: 'client/scripts/',
+        src: ['clientapp.js',
+              'controllers/*.js',
+              'factories/*.js'],
+        dest: 'server/public/scripts/'
       }
+      // angular: {
+      //   expand: true,
+      //   cwd: 'node_modules/angular/',
+      //   src: ['angular.js'],
+      //   dest: 'server/public/vendors/angular/'
+      // },
+      // bootstrap: {
+      //   expand: true,
+      //   cwd: 'node_modules/bootstrap/dist/',
+      //   src: ['css/*.css', 'fonts/*.*', 'js/*.*'],
+      //   dest: 'server/public/vendors/bootstrap/'
+      // }
     },//end copy
     watch: {
       files: ['client/**/*.*'],

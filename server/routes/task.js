@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-// var Users = require('../models/user');
 var path = require('path');
 
 // module with bcrypt functions
@@ -18,13 +17,12 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 console.log("inside post:", req.body);
 // var user = req.body.user;
-  var saveUser = {
-    username: req.body.username,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    password: encryptLib.encryptPassword(req.body.password)
+  var task = {
+    name: req.body.name,
+    description: req.body.description,
+    duration: req.body.duration
   };
-
+console.log("task in post: ", task);
   // var account =
   // console.log('NEW USER:', saveUser);
   // console.log('NEW ACCOUNT', account);
@@ -33,8 +31,8 @@ console.log("inside post:", req.body);
       console.log("Error connecting: ", err);
       next(err);
     }
-    client.query("INSERT INTO users (username, first_name, last_name, password) VALUES ($1, $2, $3, $4) RETURNING id",
-      [saveUser.username, saveUser.first_name, saveUser.last_name, saveUser.password],
+    client.query("INSERT INTO tasks (name, description, duration) VALUES ($1, $2, $3) RETURNING id",
+      [task.name, task.description, task.duration],
         function (err, result) {
           client.end();
 
@@ -42,6 +40,7 @@ console.log("inside post:", req.body);
             console.log("Error inserting data on user table: ", err);
             next(err);
           } else {
+            // res.send("hi");
             res.redirect('/');
           }
         });//end of client.query

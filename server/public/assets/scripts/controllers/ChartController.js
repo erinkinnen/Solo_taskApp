@@ -18,5 +18,4 @@ myApp.controller('StaticChartController', [function(){
         }]
   }
   });
-  console.log(myStaticChart);
 }]);//end of ChartController

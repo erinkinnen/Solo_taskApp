@@ -1,29 +1,23 @@
-// myApp.factory('TeamService', ['$http', '$location', function($http, $location){
-//   console.log('Team Service loaded.');
-//   // class dataObject {
-//   //   constructor() {}
-//   // }
-//   var userObject = {};
-//   return {
-//     userObject : userObject,
-//
-//     getuser : function(){
-//       $http.get('/user').then(function(response) {
-//           if(response.data.username) {
-//               // user has a curret session on the server
-//               userObject.userName = response.data.username;
-//               console.log('User Data: ', userObject.userName);
-//           } else {
-//               // user has no session, bounce them back to the login page
-//               $location.path("/home");
-//           }
+myApp.factory('RegisterService', ['$scope', '$http', '$location', function($scope, $http, $location){
+console.log("inside factory");
+
+// /   registerUser = function() {
+//     if($scope.user.username == '' || $scope.user.password == '') {
+//       $scope.message = "Choose a username and password!";
+//     } else {
+//       console.log('sending to USER to server...', $scope.user);
+//       $http.post('/register', $scope.user).then(function(response) {
+//         console.log('USER success');
+//         $location.path('/home');
+//       },
+//       function(response) {
+//         console.log('USER error');
+//         $scope.message = "Please try again."
 //       });
-//     },
-//
-//     logout : function() {
-//         $http.get('/user/logout').then(function(response) {
-//           console.log('logged out');
-//           $location.path("/home");
-//         });
 //     }
-//   };
+//
+  return {
+    hello: hello
+  }
+// }
+}]);

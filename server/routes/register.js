@@ -25,9 +25,6 @@ console.log("inside post:", req.body);
     password: encryptLib.encryptPassword(req.body.password)
   };
 
-  // var account =
-  // console.log('NEW USER:', saveUser);
-  // console.log('NEW ACCOUNT', account);
   pg.connect(connection, function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
@@ -37,7 +34,7 @@ console.log("inside post:", req.body);
       [saveUser.username, saveUser.first_name, saveUser.last_name, saveUser.password],
         function (err, result) {
           client.end();
-
+          console.log("success in INSERT to users ", result);
           if(err) {
             console.log("Error inserting data on user table: ", err);
             next(err);
@@ -45,18 +42,6 @@ console.log("inside post:", req.body);
             res.redirect('/');
           }
         });//end of client.query
-    // client.query("INSERT INTO account (name) VALUES ($1) RETURNING id",
-    //   [account.name],
-    //     function (err, result) {
-    //       client.end();
-    //
-    //       if(err) {
-    //         console.log("Error inserting data on account table: ", err);
-    //         next(err);
-    //       } else {
-    //         res.redirect('/');
-    //       }
-    //     });//end of client.query
   });//end of pg.connect
 
 });

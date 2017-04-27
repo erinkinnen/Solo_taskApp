@@ -32,7 +32,8 @@ router.get('/', function(req, res, next) {
             console.log('Error making query for tasks on DB ');
             res.send(500);
           } else {
-            res.sendFile(path.resolve(__dirname, '../public/views/templates/register.html'));
+            console.log('result in query: ', result);
+            res.send(result.rows);
           }//end of 2nd else
         });//end of client.query
       }//end of 1st else

@@ -8,7 +8,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountSer
       password: ''
     };
 
-    $scope.message = '';
+    // $scope.message = '';
 
     $scope.AccountService = AccountService.login;
 

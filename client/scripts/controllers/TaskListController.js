@@ -3,8 +3,8 @@ myApp.controller('TaskListController', ['$scope', '$http', function($scope, $htt
 
   $http.get('/task').then(function(response){
       console.log("inside get/ for task", response);
-
-      // task.item = response.data;
+      console.log(task);
+      // task.name = response.data;
     });
 
 }]);

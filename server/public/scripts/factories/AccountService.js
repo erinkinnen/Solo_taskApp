@@ -7,7 +7,7 @@ console.log("inside factory");
     if(user.username === '' || user.password === '') {
       message = "Choose a username and password!";
     } else {
-      console.log('sending to USER to server...', $scope.user);
+      console.log('sending to USER to server...', user);
       $http.post('/register', user).then(function(response) {
         console.log('USER success');
         $location.path('/home');

@@ -1,14 +1,15 @@
 console.log('2 AccountService.js loaded');
 
 myApp.factory('AccountService', ['$http', '$location', function($http, $location){
-console.log("inside factory");
+console.log("inside AccountService factory");
 
 
   login = function(user) {
+    console.log('inside LOGIN function');
     if(user.username === '' || user.password === '') {
       message = "Enter your username and password!";
     } else {
-      console.log('sending to server...', $scope.user);
+      console.log('sending to server...', user);
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
           console.log('success: ', response.data);

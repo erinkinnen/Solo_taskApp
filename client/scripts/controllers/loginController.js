@@ -13,6 +13,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountSer
     $scope.AccountService = AccountService.login;
 
     $scope.logIn = function(user){
+      console.log('inside LOGIN on controller');
       console.log(user);
       AccountService.login(user);
     };

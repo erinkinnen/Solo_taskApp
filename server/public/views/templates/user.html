@@ -1,7 +1,7 @@
 <div class="container">
     <h1 id="welcome" class="lead">Welcome, {{first_name}}!</h1>
 
-    <form ng-submit="createTask()">
+    <form ng-submit="createTask(task)">
       <div>
           <label for="taskname">Task Name:</label>
           <input type="text" ng-model="task.name" />
@@ -15,16 +15,18 @@
           <input type="text" ng-model="task.duration" />
       </div>
       <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Create Task" />
+          <input class="btn btn-default" type="submit" name="submit" value="Create Task"/>
           <br>
       </div>
     </form>
+
+
     <div class="row">
       <div ng-controller="TaskListController">
-        <p>{{task.name}}
-                          <div ng-repeat= "task in favoriteMovies.allFavoritesArray">
 
-                          </div>
+          <div ng-repeat= "task in taskList">
+            {{task.name}}
+          </div>
       </div>
     </div>
 

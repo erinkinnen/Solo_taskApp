@@ -21,16 +21,16 @@ myApp.controller('UserController', ['$scope', '$http', '$location', function($sc
   });
 
   $scope.createTask = function() {
-    if($scope.task.name == '' || $scope.task.description == '') {
+    if($scope.task.name === '' || $scope.task.description === '') {
       $scope.message = "Enter a task name and description";
     } else {
       // var completeAccount = {user: $scope.user, account: $scope.account};
       console.log('sending TASK to server...', $scope.task);
       $http.post('/task', $scope.task).then(function(response) {
-        console.log(response);
+        console.log("response to post is: ", response);
 
         // $location.path('/meow');
-      
+
       // function(response) {
       //   console.log('USER error');
       //   $scope.message = "Please try again."
@@ -41,6 +41,6 @@ myApp.controller('UserController', ['$scope', '$http', '$location', function($sc
       console.log('logged out');
       $location.path("/home");
     });
-  }
-}
+  };
+};
 }]);

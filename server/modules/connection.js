@@ -1,4 +1,5 @@
 // connection.js
+console.log("4 connection.js loaded");
 var connectionString = '';
 
 if(process.env.DATABASE_URL != undefined) {

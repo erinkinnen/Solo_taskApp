@@ -1,3 +1,4 @@
+console.log('2 user_sql loaded');
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
@@ -19,15 +20,15 @@ var config = {
 //it will keep idle connections open for a 30 seconds
 //and set a limit of maximum 10 idle clients
 var pool = new pg.Pool(config);
-console.log('clients connected: ', connectCount);
+console.log('5 back to user_sql.js clients connected: ', connectCount);
 
-var acquireCount = 0
+var acquireCount = 0;
 pool.on('acquire', function (client) {
   acquireCount++;
   console.log('client acquired: ', acquireCount);
-})
+});
 
-var connectCount = 0
+var connectCount = 0;
 pool.on('connect', function () {
   connectCount++;
   console.log('client connected: ', connectCount);
@@ -98,7 +99,7 @@ passport.use('local', new localStrategy({
             release();
             console.log(connectCount);
 
-            if(result.rows[0] != undefined) {
+            if(result.rows[0] !== undefined) {
               user = result.rows[0];
               console.log('User obj', user);
               // Hash and compare

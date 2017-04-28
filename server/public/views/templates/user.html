@@ -1,6 +1,7 @@
 <div class="container">
     <h1 id="welcome" class="lead">Welcome, {{first_name}}!</h1>
 
+
     <form ng-submit="createTask(task)">
       <div>
           <label for="taskname">Task Name:</label>
@@ -22,7 +23,7 @@
 
 
     <div class="row">
-      <div ng-controller="TaskListController">
+      <div ng-controller="TaskListController" >
 
           <div ng-repeat= "task in taskList">
             {{task.name}}

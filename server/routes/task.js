@@ -41,9 +41,9 @@ router.get('/', function(req, res, next) {
     // res.sendFile(path.resolve(__dirname, '../public/views/register.html'));
 });//end of .get
 
-// Handles POST request with new user data
+// Handles POST request with new task data
 router.post('/', function(req, res, next) {
-console.log("inside post:", req.body);
+console.log("inside task post:", req.body);
 // var user = req.body.user;
   var task = {
     name: req.body.name,

@@ -1,7 +1,6 @@
 <div class="container">
     <h1 id="welcome" class="lead">Welcome, {{first_name}}!</h1>
 
-
     <form ng-submit="newTask(task)">
       <div>
           <label for="taskname">Task Name:</label>
@@ -21,16 +20,18 @@
       </div>
     </form>
 
-
     <div class="row">
       <div ng-controller="UserController" >
 
           <div ng-repeat= "task in taskObject.taskList">
-            <input type="text" ng-model="task.name">
-            <span>{{task.name}}</span>
-            <input type="checkbox" ng-model="task.name">
-            <!-- This should go inside ^ ng-change="here's where I will clear from DOM" -->
-            {{task.name}}
+
+            <div ng-hide="task.completed">
+              <button type="btn btn-default" ng-model="task" ng-click='clickCheckbox(task)'>Done</button>
+              <!-- <input type="btn btn-default" ng-model="task" ng-click='clickCheckbox(task)' ng-hide="task.completed"> -->
+
+                {{task.name}}
+                {{task.completed}}
+              </div>
           </div>
       </div>
     </div>

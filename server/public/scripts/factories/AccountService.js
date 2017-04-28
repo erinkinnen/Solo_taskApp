@@ -14,7 +14,7 @@ var taskObject = {
       // console.log('sending to server...', user);
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
-          console.log('success, edirecting to user page: ', response.data);
+          // console.log('success, redirecting to user page: ', response.data);
           // location works with SPA (ng-route)
           $location.path('/user');
         } else {
@@ -44,9 +44,10 @@ var taskObject = {
 
 getTasks = function(){
 $http.get('/task').then(function(response){
+    // console.log("Check this out: " , response);
     taskObject.taskList = response.data;
-    console.log('taskList inside get/task', taskObject.taskList);
-    console.log('response.data inside get/task: ', response.data);
+    // console.log('taskList inside get/task', taskObject.taskList);
+    // console.log('response.data inside get/task: ', response.data);
         });
   };
 createTask = function(task){
@@ -56,10 +57,11 @@ createTask = function(task){
     //created newTask and send copy in order to grab data bound object, send it
     //to database AND be able to clear data binding
     var newTask = angular.copy(task);
-    console.log(newTask);
+    // console.log(newTask);
     //must post newTask copy to DB
     $http.post('/task', newTask).then(function(response) {
-      console.log("response to post is: ", response);
+      console.log('createTask post');
+      // console.log("response to post is: ", response);
       getTasks();
     });
   }//end of post /task

@@ -4,7 +4,8 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
   $scope.task = {
     name: '',
     description: '',
-    duration: ''
+    duration: '',
+    completed: false
   };
 
   $http.get('/user').then(function(response) {
@@ -18,6 +19,14 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
           $location.path("/home");
       }
   });//end of get /user
+
+  //This function needs to update task.completed to true and send put to database
+  $scope.clickCheckbox = function(task){
+    console.log("This is task before: ", task);
+    task.completed = true;
+    console.log("This is task after: ", task);
+
+  };
 
   AccountService.getTasks();
   $scope.taskObject = AccountService.taskObject;

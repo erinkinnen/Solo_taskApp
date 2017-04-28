@@ -1,4 +1,4 @@
-console.log("1 loginController loaded");
+console.log("loginController loaded");
 myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountService', function($scope, $http, $location, AccountService) {
 
     $scope.user = {

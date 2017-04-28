@@ -29,6 +29,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/task.html',
       controller: "UserController"
     })
+    .when('/newTask', {
+      templateUrl: '/views/newTask.html',
+      controller: 'UserController'
+    })
     .otherwise({
       redirectTo: 'home'
     });

@@ -26,6 +26,10 @@
       <div ng-controller="UserController" >
 
           <div ng-repeat= "task in taskObject.taskList">
+            <input type="text" ng-model="task.name">
+            <span>{{task.name}}</span>
+            <input type="checkbox" ng-model="task.name">
+            <!-- This should go inside ^ ng-change="here's where I will clear from DOM" -->
             {{task.name}}
           </div>
       </div>

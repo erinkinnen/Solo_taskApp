@@ -58,7 +58,7 @@ console.log("task in post: ", task);
       console.log("Error connecting: ", err);
       next(err);
     }
-    client.query("INSERT INTO tasks (name, description, duration) VALUES ($1, $2, $3) RETURNING id",
+    client.query("INSERT INTO tasks (name, description, duration, completed) VALUES ($1, $2, $3, $4) RETURNING id",
       [task.name, task.description, task.duration, task.completed],
         function (err, result) {
           client.end();

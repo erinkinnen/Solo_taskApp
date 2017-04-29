@@ -18,19 +18,19 @@ myApp.config(['$routeProvider', function($routeProvider) {
     //   controller: 'StaticChartController',
     // })
     .when('/register', {
-      templateUrl: '/views/templates/register.html',
-      controller: "LoginController"
+    templateUrl: '/views/templates/register.html',
+    controller: "LoginController"
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
       controller: "UserController"
     })
-    .when('/task', {
-      templateUrl: '/views/task.html',
-      controller: "UserController"
-    })
+    // .when('/task', {
+    //   templateUrl: '/views/templates/task.html',
+    //   controller: "UserController"
+    // })
     .when('/newTask', {
-      templateUrl: '/views/newTask.html',
+      templateUrl: '/views/templates/newTask.html',
       controller: 'UserController'
     })
     .otherwise({

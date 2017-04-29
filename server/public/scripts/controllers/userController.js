@@ -8,6 +8,8 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
     completed: false
   };
 
+    
+
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
@@ -47,6 +49,7 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
     AccountService.createTask(task);
     $scope.task = {};
 };
+
   $scope.logout = function() {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');

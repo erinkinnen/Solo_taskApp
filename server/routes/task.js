@@ -48,7 +48,8 @@ console.log("inside task post:", req.body);
   var task = {
     name: req.body.name,
     description: req.body.description,
-    duration: req.body.duration
+    duration: req.body.duration,
+    completed: req.body.completed
   };
 console.log("task in post: ", task);
 
@@ -58,7 +59,7 @@ console.log("task in post: ", task);
       next(err);
     }
     client.query("INSERT INTO tasks (name, description, duration) VALUES ($1, $2, $3) RETURNING id",
-      [task.name, task.description, task.duration],
+      [task.name, task.description, task.duration, task.completed],
         function (err, result) {
           client.end();
           if(err) {
@@ -70,8 +71,42 @@ console.log("task in post: ", task);
           }
         });//end of client.query
   });//end of pg.connect
+});//end of post
 
-});
+// Handles POST request with new task data
+router.put('/', function(req, res, next) {
+console.log("inside task PUT:", req.body);
+// var user = req.body.user;
+  var updateTask = {
+    id: req.body.id,
+    name: req.body.name,
+    description: req.body.description,
+    duration: req.body.duration,
+    completed: req.body.completed
+  };
+
+// console.log("task in PUT: ", task);
+
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log("Error connecting: ", err);
+      next(err);
+    }
+    // UPDATE "tasks" SET "completed"='true' WHERE "id" = req.body.id
+    client.query('UPDATE tasks SET "completed" = true WHERE "id"= $1',
+      [req.body.id],
+        function (err, result) {
+          client.end();
+          if(err) {
+            console.log("Error inserting data on user table: ", err);
+            next(err);
+          } else {
+            // res.send("hi");
+            res.sendStatus(200);
+          }
+        });//end of client.query
+  });//end of pg.connect
+});//end of post
 
 
 

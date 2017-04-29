@@ -14,7 +14,7 @@ var taskObject = {
       // console.log('sending to server...', user);
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
-          // console.log('success, redirecting to user page: ', response.data);
+          console.log('success, redirecting to user page: ', response.data);
           // location works with SPA (ng-route)
           $location.path('/user');
         } else {

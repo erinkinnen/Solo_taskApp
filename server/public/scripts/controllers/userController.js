@@ -21,12 +21,21 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
   });//end of get /user
 
   //This function needs to update task.completed to true and send put to database
+
+
   $scope.clickCheckbox = function(task){
     console.log("This is task before: ", task);
     task.completed = true;
     console.log("This is task after: ", task);
+    var updateTask = task;
+    // console.log(newTask);
+    //must post newTask copy to DB
+      $http.put('/task', updateTask).then(function(response) {
+        console.log('createTask put');
+        getTasks();
+      });//end of put /task
+    };//end of clickCheckbox
 
-  };
 
   AccountService.getTasks();
   $scope.taskObject = AccountService.taskObject;

@@ -25,10 +25,14 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/templates/user.html',
       controller: "UserController"
     })
-    // .when('/task', {
-    //   templateUrl: '/views/templates/task.html',
-    //   controller: "UserController"
-    // })
+    .when('/newUser', {
+      templateUrl: '/views/templates/newUser.html',
+      controller: "LoginController"
+    })
+    .when('/assignTask', {
+      templateUrl: '/views/templates/assignTask.html',
+      controller: "AssignTaskController"
+    })
     .when('/newTask', {
       templateUrl: '/views/templates/newTask.html',
       controller: 'UserController'

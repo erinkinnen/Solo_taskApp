@@ -8,13 +8,25 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountSer
       password: ''
     };
 
+    $scope.secondary_user = {
+      account_id: '',
+      first_name: '',
+      last_name: '',
+      age: ''
+    };
+
     // $scope.message = '';
+$scope.AccountService = AccountService.userObject;
+$scope.getUserID = function(user){
+  console.log("GETUSERID: ", user);
+  AccountService.userObject(user);
+};
 
     $scope.AccountService = AccountService.login;
-
+//entered on homepage
     $scope.logIn = function(user){
       console.log('inside LOGIN on controller');
-      console.log(user);
+      console.log("LOGIN: ",user);
       AccountService.login(user);
     };
     //gives access to AccountService
@@ -24,6 +36,13 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountSer
     $scope.register = function(user){
       console.log(user);
       AccountService.registerUser(user);
+    };
+
+    $scope.AccountService = AccountService.registerSecondaryUser;
+    $scope.registerSecondary = function(secondary_user){
+      // console.log("inside registerSecondaryUser function");
+      console.log("Sec User inside LoginController", secondary_user );
+      AccountService.registerSecondaryUser(secondary_user);
     };
 
 }]);//end of controller

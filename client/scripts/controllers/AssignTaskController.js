@@ -1,25 +1,25 @@
 console.log("AssignTaskController.js loaded");
 myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'AccountService', function($scope, $http, $location, AccountService) {
 
-  $scope.assignedTasks = [{
-    name: '',
-    selected: false
-    }];
+  $scope.assignTaskView = function(){
+    // console.log("inside assignTaskView function");
+    $location.path('/assignTask');
+  };
 
-    // Selected fruits
-    $scope.completedTasks = [];
+  AccountService.getTasks();
+  $scope.taskObject = AccountService.taskObject;
+  // console.log("inside AssignTaskController: ", AccountService.taskObject);
 
-    // Helper method to get selected fruits
-    $scope.completedTasks = function completedTasks() {
-      return filterFilter($scope.assignedTasks, { selected: true });
-    };
+  var assignedTaskList = this;
+  // console.log('START AssignedTaskList: ',assignedTaskList);
+  assignedTaskList.AssignedTaskObject = AccountService.AssignedTaskObject;
 
-    // Watch fruits for changes
-    $scope.$watch('assignedTasks|filter:{selected:true}', function (nv) {
-      $scope.completedTasks = nv.map(function (task) {
-        return task.name;
-      });
-    }, true);
-  }]);
+  var addAssignedTask = AccountService.addAssignedTask;
+
+  var createTaskArray = function(task){
+    console.log(task);
+    var assignedTaskArray = [{}];
+
+  };
 
 }]);//end AssignTaskController

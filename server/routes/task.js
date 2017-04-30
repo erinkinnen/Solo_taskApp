@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
             console.log('Error making query for tasks on DB ');
             res.send(500);
           } else {
-            console.log('result in query: ', result);
+            // console.log('result in query: ', result);
             res.send(result.rows);
           }//end of 2nd else
         });//end of client.query
@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
 
 // Handles POST request with new task data
 router.post('/', function(req, res, next) {
-console.log("inside task post:", req.body);
+// console.log("inside task post:", req.body);
 // var user = req.body.user;
   var task = {
     name: req.body.name,
@@ -51,7 +51,7 @@ console.log("inside task post:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-console.log("task in post: ", task);
+// console.log("task in post: ", task);
 
   pg.connect(connection, function(err, client, done) {
     if(err) {

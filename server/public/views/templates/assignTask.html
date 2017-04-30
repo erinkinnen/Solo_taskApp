@@ -1,0 +1,69 @@
+
+<div class="container">
+
+<!--
+
+    <div ng-controller="UserController" >
+
+
+    </div>
+<div ng-controller="AssignTaskController">
+
+  {{first_name}}
+  <br>
+  <input type="date" name="" value="">
+  {{date}}
+  <br>
+<div ng-repeat= "task in taskObject.taskList"
+<label for="task_selector">Select a task: </label>
+<select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList">
+  <option value="Choose a task"></option>
+</select>
+
+</div>
+{{selected_task.name}}
+</div> -->
+    <form ng-submit="addAssignedTask(task)">
+      <div>
+          <label for="taskdate">Date:</label>
+          <input type="date" ng-model="assignedTask.date"/>
+      </div>
+      <!-- <div>
+          <label for="task_selector">Task:</label>
+          <select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList"/>
+            <option value="Choose a task"></option> <br>
+      </div> -->
+      <div>
+          <label for="firstname">First Name:</label>
+          <input type="text" ng-model="user.first_name" />
+      </div>
+
+      <!-- <div>
+          <label for="duration">Expected Duration:</label>
+          <input type="text" ng-model="task.duration"/>
+      </div> -->
+      <div>
+          <label for="task_selector">Task:</label>
+          <select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList"/>
+            <option value="Choose a task"></option> <br>
+      </div>
+
+      <div>
+          <input class="btn btn-default" type="submit" name="submit" value="Assign Task"/>
+          <br>
+      </div>
+    </form>
+
+    <!-- <button class="btn btn-default" ng-click="newUser()">Add New User</button>
+    <button class="btn btn-default" ng-click="logout()">Log Out</button>
+<data ng-controller="TaskListController">
+  <button class="btn btn-default" ng-click="newTaskView()">Add New Task</button>
+</data>
+<input type="date" name="" value="">
+    <div class="row">
+
+    </div>
+
+
+</div>
+</div>

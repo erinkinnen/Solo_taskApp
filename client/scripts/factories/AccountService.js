@@ -1,13 +1,27 @@
 console.log('AccountService.js loaded');
 
 myApp.factory('AccountService', ['$http', '$location', function($http, $location){
-console.log("inside AccountService factory");
+
 var taskObject = {
   taskList : []
 };
 
+var userObject = {
+  user: {}
+};
+
+var assignedTaskObject = {
+    tasksArray: [],
+  };
+
+var addAssignedTask = function(task) {
+  assignedTaskObject.tasksArray.push(task);
+
+  console.log(pizzaObject);
+};
+
   login = function(user) {
-    console.log('inside LOGIN function');
+    // console.log('inside LOGIN function');
     if(user.username === '' || user.password === '') {
       message = "Enter your username and password!";
     } else {
@@ -15,6 +29,7 @@ var taskObject = {
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
           console.log('success, redirecting to user page: ', response.data);
+          userObject.user = response.data;
           // location works with SPA (ng-route)
           $location.path('/user');
         } else {
@@ -24,7 +39,6 @@ var taskObject = {
       });
     }
   };//end of login function
-
 
   registerUser = function(user) {
     if(user.username === '' || user.password === '') {
@@ -41,6 +55,26 @@ var taskObject = {
       });
     }
 };// end of function
+
+registerSecondaryUser = function(secondary_user) {
+  console.log("inside registerSecondaryUser in factory");
+  if(secondary_user.name === '') {
+    message = "Enter a user";
+  } else {
+    console.log('sending to SECONDARY USER to server...', secondary_user);
+    secondary_user.account_id = userObject.user.id;
+    $http.post('/secondaryUser', secondary_user).then(function(response) {
+      console.log('SECONDARY USER success');
+      // $location.path('/user');
+    },
+    function(response) {
+      console.log('SECONDARY USER error');
+      message = "Please try again.";
+    });
+  }
+};// end of function
+
+
 
 getTasks = function(){
 $http.get('/task').then(function(response){
@@ -67,13 +101,15 @@ createTask = function(task){
   }//end of post /task
     //clears data bound task
 };//end of createTask
-
+console.log("userObject = ", userObject);
 return {
   login: login,
   registerUser: registerUser,
+  registerSecondaryUser: registerSecondaryUser,
   getTasks: getTasks,
   createTask: createTask,
-  taskObject: taskObject
+  taskObject: taskObject,
+  userObject: userObject
 };
 
 }]);//end of factory

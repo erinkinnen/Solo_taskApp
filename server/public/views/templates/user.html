@@ -11,34 +11,44 @@
   </div> -->
   <!-- <input class="btn btn-default" type="submit" name="submit" value="Test" />
 </form> -->
-
 <div class="row">
-  <div class="">
+  <div ng-controller="UserController">
+    <table>
+      <label>Students</label>
+      <tr ng-repeat="secondary in secondaryUserObject.secondary_user">
+        <td>
+          {{secondary.first_name}}
+          <button class="btn btn-default" ng-click="assignTaskView()">Assign Tasks</button>
+        </td>
+      </tr>
+    </table>
 
   </div>
 </div>
     <button class="btn btn-default" ng-click="newUserView()">Add New User</button>
     <button class="btn btn-default" ng-click="logout()">Log Out</button>
-<div ng-controller="AssignTaskController">
+<!-- <div ng-controller="AssignTaskController">
   <button class="btn btn-default" ng-click="assignTaskView()">Assign Tasks</button>
-</div>
+</div> -->
 
 <div ng-controller="TaskListController">
   <button class="btn btn-default" ng-click="newTaskView()">Add New Task</button>
 </div>
+
 <input type="date" name="" value="">
-    <div class="row">
-      <div ng-controller="UserController" >
 
-          <div ng-repeat= "task in taskObject.taskList">
+<div class="row">
+  <div ng-controller="UserController" >
 
-            <div ng-hide="task.completed">
-              <button type="btn btn-default" ng-model="task" ng-click='clickCheckbox(task)'>Done</button>
-                {{task.name}}
-              </div>
+      <div ng-repeat= "task in taskObject.taskList">
+
+        <div ng-hide="task.completed">
+          <button type="btn btn-default" ng-model="task" ng-click='clickCheckbox(task)'>Done</button>
+            {{task.name}}
           </div>
       </div>
-    </div>
+  </div>
+</div>
 
 
 </div>

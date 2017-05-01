@@ -10,7 +10,9 @@ var userObject = {
   user: {}
 };
 
-var secondaryUserObject = {};
+var secondaryUserObject = {
+  secondary_user: {}
+};
 
 var assignedTaskObject = {
     tasksArray: [],
@@ -33,6 +35,9 @@ var test = {
   date: '',
   name: ''
 };
+
+console.log("userObject.user BEFORE: ", userObject.user);
+console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
 var addAssignedTask = function(task) {
   assignedTaskObject.tasksArray.push(task);
 
@@ -47,7 +52,7 @@ var addAssignedTask = function(task) {
       // console.log('sending to server...', user);
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
-          // console.log('success, redirecting to user page: ', response.data);
+          console.log('success, redirecting to user page: ', response.data);
           userObject.user = response.data;
           // location works with SPA (ng-route)
           $location.path('/user');
@@ -102,7 +107,8 @@ getAcctUsers = function(){
   // console.log("INSIDE getAcctUsers userObject", userObject.user.id);
   // if(secondary_user.account_id === userObject.user.id){
     $http.get('/secondaryUser/'+ userObject.user.id).then(function(response){
-      usersArrayObject.usersArray = response.data;
+      secondaryUserObject.secondary_user = response.data;
+      console.log(secondaryUserObject.secondary_user);
       // console.log("back from server: ", response.data);
     });
   // }

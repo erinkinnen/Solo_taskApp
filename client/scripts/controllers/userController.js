@@ -44,14 +44,14 @@ $scope.acct_Id = AccountService.acct_Id;
       });//end of put /task
     };//end of clickCheckbox
 
-
+  AccountService.secondaryUserObject;
   AccountService.getTasks();
   $scope.taskObject = AccountService.taskObject;
   // console.log("inside UserController: ", AccountService.taskObject);
   // console.log('checking user');
 
   AccountService.getAcctUsers();
-    $scope.usersArrayObject = AccountService.usersArrayObject;
+    $scope.secondaryUserObject = AccountService.secondaryUserObject;
 
   $scope.newTask = function(task){
     AccountService.createTask(task);

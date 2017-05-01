@@ -18,7 +18,7 @@
       <tr ng-repeat="secondary in secondaryUserObject.secondary_user">
         <td>
           {{secondary.first_name}}
-          <button class="btn btn-default" ng-click="assignTaskView()">Assign Tasks</button>
+          <button class="btn btn-default" ng-click="assignTaskView($index)">Assign Tasks</button>
         </td>
       </tr>
     </table>

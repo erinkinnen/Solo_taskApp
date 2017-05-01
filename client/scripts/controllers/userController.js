@@ -8,10 +8,17 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
     completed: false
   };
 
+//VIEW CHANGERS
   $scope.newUserView = function(){
-    // console.log("inside newUserView function");
     $location.path('/newUser');
   };
+
+  $scope.assignTaskView = function(index){
+    AccountService.selectedSecondaryUser = $scope.secondaryUserObject.secondary_user[index];
+    console.log('Meeeeeeow: ', AccountService.selectedSecondaryUser);
+    $location.path('/assignTask');
+  };
+
 
   $http.get('/user').then(function(response) {
       if(response.data.username) {
@@ -27,9 +34,6 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
           $location.path("/home");
       }
   });//end of get /user
-$scope.acct_Id = AccountService.acct_Id;
-  //This function needs to update task.completed to true and send put to database
-
 
   $scope.clickCheckbox = function(task){
     // console.log("This is task before: ", task);
@@ -64,7 +68,5 @@ $scope.acct_Id = AccountService.acct_Id;
       $location.path("/home");
     });
   };//end logout
-
-
 
 }]);//end UserController

@@ -1,25 +1,33 @@
 console.log("AssignTaskController.js loaded");
 myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'AccountService', function($scope, $http, $location, AccountService) {
 
-  $scope.assignTaskView = function(){
-    // console.log("inside assignTaskView function");
-    $location.path('/assignTask');
-  };
-
+// AccountService.login();
+// AccountService.secondaryUserObject();
+//gets all tasks from tasks table on DB
   AccountService.getTasks();
   $scope.taskObject = AccountService.taskObject;
-  // console.log("inside AssignTaskController: ", AccountService.taskObject);
 
+  $scope.assignedTask = {
+    date: '',
+    task: '',
+    completed: false
+  };
+
+  var assignedTaskArray = [
+    assignedTask = {}
+  ];
+  $scope.addAssignedTask = function(assignedTask){
+    assignedTaskArray.push(assignedTask);
+    console.log('ASSIGNED TASK : ', AccountService.selectedSecondaryUser, assignedTask.task);
+    console.log('ASSIGNED TASK ARRAY: ', assignedTaskArray);
+  };
+console.log("here's the array: ", assignedTaskArray);
   var assignedTaskList = this;
-  // console.log('START AssignedTaskList: ',assignedTaskList);
+  console.log('PP START AssignedTaskList: ',assignedTaskList);
   assignedTaskList.AssignedTaskObject = AccountService.AssignedTaskObject;
 
-  var addAssignedTask = AccountService.addAssignedTask;
+  AccountService.addAssignedTask;
 
-  var createTaskArray = function(task){
-    console.log(task);
-    var assignedTaskArray = [{}];
 
-  };
 
 }]);//end AssignTaskController

@@ -36,10 +36,14 @@ var test = {
   name: ''
 };
 
-console.log("userObject.user BEFORE: ", userObject.user);
-console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
+var selectedSecondaryUser = {};
+
+// console.log("userObject.user BEFORE: ", userObject.user);
+// console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
+console.log("Before assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
 var addAssignedTask = function(task) {
   assignedTaskObject.tasksArray.push(task);
+console.log("After assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
 
 
 };
@@ -108,7 +112,7 @@ getAcctUsers = function(){
   // if(secondary_user.account_id === userObject.user.id){
     $http.get('/secondaryUser/'+ userObject.user.id).then(function(response){
       secondaryUserObject.secondary_user = response.data;
-      console.log(secondaryUserObject.secondary_user);
+      console.log("meow ", secondaryUserObject.secondary_user);
       // console.log("back from server: ", response.data);
     });
   // }
@@ -153,6 +157,7 @@ return {
   taskObject: taskObject,
   userObject: userObject,
   secondaryUserObject: secondaryUserObject,
+  selectedSecondaryUser: selectedSecondaryUser,
   getAcctUsers: getAcctUsers
   // makeTest: makeTest
 };

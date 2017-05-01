@@ -1,29 +1,8 @@
 
 <div class="container">
+<h1 id="welcome" class="lead">Assigning task to !</h1>
 
-<!--
-
-    <div ng-controller="UserController" >
-
-
-    </div>
-<div ng-controller="AssignTaskController">
-
-  {{first_name}}
-  <br>
-  <input type="date" name="" value="">
-  {{date}}
-  <br>
-<div ng-repeat= "task in taskObject.taskList"
-<label for="task_selector">Select a task: </label>
-<select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList">
-  <option value="Choose a task"></option>
-</select>
-
-</div>
-{{selected_task.name}}
-</div> -->
-    <form ng-submit="addAssignedTask(task)">
+    <form ng-submit="addAssignedTask(assignedTask)">
       <div>
           <label for="taskdate">Date:</label>
           <input type="date" ng-model="assignedTask.date"/>
@@ -35,7 +14,8 @@
       </div> -->
       <div>
           <label for="firstname">First Name:</label>
-          <input type="text" ng-model="user.first_name" />
+          {{secondary.first_name}}
+          <!-- <input type="text" ng-model="user.first_name" /> -->
       </div>
 
       <!-- <div>
@@ -44,15 +24,21 @@
       </div> -->
       <div>
           <label for="task_selector">Task:</label>
-          <select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList"/>
+          <select class="" name="" ng-model="assignedTask.task" ng-options="task.name for task in taskObject.taskList"/>
             <option value="Choose a task"></option> <br>
       </div>
 
       <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Assign Task"/>
+          <input class="btn btn-default" type="submit" name="submit" value="GERP"/>
           <br>
       </div>
     </form>
+    <div ng-repeat="task in assignedassignedTaskArray">
+      {{task.date}}
+    </div>
+    <div ng-controller="AssignTaskController">
+
+    </div>
     <a href="#user">Cancel</a>
 
     <!-- <button class="btn btn-default" ng-click="newUser()">Add New User</button>

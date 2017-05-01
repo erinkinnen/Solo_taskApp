@@ -37,6 +37,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/templates/newTask.html',
       controller: 'UserController'
     })
+    .when('/secondary', {
+      templateUrl: '/views/templates/secondary.html',
+      controller: 'DynamicChartController'
+    })
     .otherwise({
       redirectTo: 'home'
     });

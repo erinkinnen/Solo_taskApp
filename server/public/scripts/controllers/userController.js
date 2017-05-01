@@ -50,6 +50,8 @@ $scope.acct_Id = AccountService.acct_Id;
   // console.log("inside UserController: ", AccountService.taskObject);
   // console.log('checking user');
 
+  AccountService.getAcctUsers();
+    $scope.usersArrayObject = AccountService.usersArrayObject;
 
   $scope.newTask = function(task){
     AccountService.createTask(task);
@@ -62,4 +64,7 @@ $scope.acct_Id = AccountService.acct_Id;
       $location.path("/home");
     });
   };//end logout
+
+
+
 }]);//end UserController

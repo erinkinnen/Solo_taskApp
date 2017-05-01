@@ -9,12 +9,43 @@ var path = require('path');
 var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
 var pg = require('pg');
+var config = {
+  user: 'erinkinnen', //env var: PGUSER
+  database: 'SOLO_taskapp', //env var: PGDATABASE
+  password: '', //env var: PGPASSWORD
+  port: 5432, //env var: PGPORT
+  max: 10, // max number of clients in the pool
+  idleTimeoutMillis: 1500, // 1.5s // how long a client is allowed to remain idle before being closed
+};
+var pool = new pg.Pool(config);
 
 // Handles request for HTML file
-router.get('/', function(req, res, next) {
-    res.sendFile(path.resolve(__dirname, '../public/views/newUser.html'));
-});
+// router.get('/', function(req, res, next) {
+//     res.sendFile(path.resolve(__dirname, '../public/views/newUser.html'));
+// });
 console.log("HERE!");
+
+router.get('/', function(req, res, next) {
+    pool.connect(function(errorConnectingToDB, client, done){
+      if(errorConnectingToDB){
+        console.log("Error Connecting to DB for secondaryUser List");
+        res.send(500);
+      } else {
+        client.query('SELECT * FROM "secondary_user" JOIN "users" ON "secondary_user"."account_id"= "users"."id"', function(queryError, result){
+          console.log("GET SECONDARY success******");
+          done();
+          if(queryError){
+            console.log('Error making query for tasks on DB ');
+            res.send(500);
+          } else {
+            // console.log('result in query: ', result);
+            res.send(result.rows);
+          }//end of 2nd else
+        });//end of client.query
+      }//end of 1st else
+    });//end of pool.connect
+});//end of .get
+
 // Handles POST request with new user data
 router.post('/', function(req, res, next) {
 console.log("inside secondary_user post:", req.body);

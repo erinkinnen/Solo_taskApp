@@ -14,6 +14,23 @@ var assignedTaskObject = {
     tasksArray: [],
   };
 
+var usersArrayObject = {
+  usersArray: [],
+};
+
+var newSecondaryUser = {};
+
+var secondary_user = {
+  account_id: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  age: ''
+};
+var test = {
+  date: '',
+  name: ''
+};
 var addAssignedTask = function(task) {
   assignedTaskObject.tasksArray.push(task);
 
@@ -40,6 +57,9 @@ var addAssignedTask = function(task) {
     }
   };//end of login function
 
+makeTest = function(day){
+  console.log(makeTest);
+};
   registerUser = function(user) {
     if(user.username === '' || user.password === '') {
       message = "Choose a username and password!";
@@ -63,9 +83,10 @@ registerSecondaryUser = function(secondary_user) {
   } else {
     console.log('sending to SECONDARY USER to server...', secondary_user);
     secondary_user.account_id = userObject.user.id;
-    $http.post('/secondaryUser', secondary_user).then(function(response) {
+    var newSecondaryUser = angular.copy(secondary_user);
+    $http.post('/secondaryUser', newSecondaryUser).then(function(response) {
       console.log('SECONDARY USER success');
-      // $location.path('/user');
+      $location.path('/user');
     },
     function(response) {
       console.log('SECONDARY USER error');
@@ -74,12 +95,32 @@ registerSecondaryUser = function(secondary_user) {
   }
 };// end of function
 
+getAcctUsers = function(){
+  if(secondary_user.account_id === userObject.user.id){
+    console.log("?????inside getAcctUsers function");
+    $http.post('/secondaryUser').then(function(response){
+      usersArrayObject.usersArray = response.data;
+    });
+  }
+};
+
+
+
+
+
+// getAcctUsers = function(){
+//   $http.get('/secondaryUser').then(function(response){
+//     console.log("inside getAcctUsers ####", response);
+//     usersArrayObject.usersArray = response.data;
+//   });
+// };
 
 
 getTasks = function(){
 $http.get('/task').then(function(response){
     // console.log("Check this out: " , response);
     taskObject.taskList = response.data;
+    console.log("*(&^(*^&*&(^))): ", response.data);
     // console.log('taskList inside get/task', taskObject.taskList);
     // console.log('response.data inside get/task: ', response.data);
         });
@@ -95,6 +136,7 @@ createTask = function(task){
     //must post newTask copy to DB
     $http.post('/task', newTask).then(function(response) {
       console.log('createTask post');
+      $location.path('/user');
       // console.log("response to post is: ", response);
       getTasks();
     });
@@ -109,7 +151,9 @@ return {
   getTasks: getTasks,
   createTask: createTask,
   taskObject: taskObject,
-  userObject: userObject
+  userObject: userObject,
+  getAcctUsers: getAcctUsers,
+  makeTest: makeTest
 };
 
 }]);//end of factory

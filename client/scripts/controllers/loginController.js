@@ -15,6 +15,17 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'AccountSer
       age: ''
     };
 
+    $scope.newSecondaryUser = {};
+$scope.test = {
+  date: '',
+  name: ''
+};
+$scope.AccountService = AccountService.makeTest;
+$scope.test = function(day){
+  // console.log("inside registerSecondaryUser function");
+  console.log("inside test", day );
+  AccountService.makeTest(day);
+};
     // $scope.message = '';
 $scope.AccountService = AccountService.userObject;
 $scope.getUserID = function(user){
@@ -44,5 +55,6 @@ $scope.getUserID = function(user){
       console.log("Sec User inside LoginController", secondary_user );
       AccountService.registerSecondaryUser(secondary_user);
     };
+
 
 }]);//end of controller

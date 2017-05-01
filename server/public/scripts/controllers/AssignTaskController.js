@@ -18,8 +18,9 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
   ];
   $scope.addAssignedTask = function(assignedTask){
     assignedTaskArray.push(assignedTask);
-    console.log('ASSIGNED TASK : ', AccountService.selectedSecondaryUser, assignedTask.task);
+    console.log('%%ASSIGNED TASK : ', AccountService.selectedSecondaryUser, assignedTask.task);
     console.log('ASSIGNED TASK ARRAY: ', assignedTaskArray);
+    $scope.assignedTask = {};
   };
 console.log("here's the array: ", assignedTaskArray);
   var assignedTaskList = this;
@@ -27,7 +28,6 @@ console.log("here's the array: ", assignedTaskArray);
   assignedTaskList.AssignedTaskObject = AccountService.AssignedTaskObject;
 
   AccountService.addAssignedTask;
-
 
 
 }]);//end AssignTaskController

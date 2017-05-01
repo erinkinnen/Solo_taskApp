@@ -15,7 +15,7 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
 
   $scope.assignTaskView = function(index){
     AccountService.selectedSecondaryUser = $scope.secondaryUserObject.secondary_user[index];
-    console.log('Meeeeeeow: ', AccountService.selectedSecondaryUser);
+    console.log('Selected Secondary User: ', AccountService.selectedSecondaryUser);
     $location.path('/assignTask');
   };
 

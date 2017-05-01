@@ -17,9 +17,9 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
       if(response.data.username) {
           // user has a curret session on the server
           $scope.userName = response.data.username;
-          console.log("inside get ", response.data.id);
+          // console.log("inside get ", response.data.id);
           $scope.acct_Id = response.data.id;
-          console.log($scope.acct_Id);
+          // console.log($scope.acct_Id);
           $scope.first_name = response.data.first_name;
           // console.log('User Data: ', $scope.first_name);
       } else {

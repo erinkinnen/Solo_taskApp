@@ -10,6 +10,8 @@ var userObject = {
   user: {}
 };
 
+var secondaryUserObject = {};
+
 var assignedTaskObject = {
     tasksArray: [],
   };
@@ -34,7 +36,7 @@ var test = {
 var addAssignedTask = function(task) {
   assignedTaskObject.tasksArray.push(task);
 
-  console.log(pizzaObject);
+
 };
 
   login = function(user) {
@@ -45,7 +47,7 @@ var addAssignedTask = function(task) {
       // console.log('sending to server...', user);
       $http.post('/', user).then(function(response) {
         if(response.data.username) {
-          console.log('success, redirecting to user page: ', response.data);
+          // console.log('success, redirecting to user page: ', response.data);
           userObject.user = response.data;
           // location works with SPA (ng-route)
           $location.path('/user');
@@ -57,14 +59,14 @@ var addAssignedTask = function(task) {
     }
   };//end of login function
 
-makeTest = function(day){
-  console.log(makeTest);
-};
+// makeTest = function(day){
+//   // console.log(makeTest);
+// };
   registerUser = function(user) {
     if(user.username === '' || user.password === '') {
       message = "Choose a username and password!";
     } else {
-      console.log('sending to USER to server...', user);
+      // console.log('sending to USER to server...', user);
       $http.post('/register', user).then(function(response) {
         console.log('USER success');
         $location.path('/home');
@@ -77,15 +79,15 @@ makeTest = function(day){
 };// end of function
 
 registerSecondaryUser = function(secondary_user) {
-  console.log("inside registerSecondaryUser in factory");
+  // console.log("inside registerSecondaryUser in factory");
   if(secondary_user.name === '') {
     message = "Enter a user";
   } else {
-    console.log('sending to SECONDARY USER to server...', secondary_user);
+    // console.log('sending to SECONDARY USER to server...', secondary_user);
     secondary_user.account_id = userObject.user.id;
     var newSecondaryUser = angular.copy(secondary_user);
     $http.post('/secondaryUser', newSecondaryUser).then(function(response) {
-      console.log('SECONDARY USER success');
+      // console.log('SECONDARY USER success');
       $location.path('/user');
     },
     function(response) {
@@ -96,31 +98,23 @@ registerSecondaryUser = function(secondary_user) {
 };// end of function
 
 getAcctUsers = function(){
-  if(secondary_user.account_id === userObject.user.id){
-    console.log("?????inside getAcctUsers function");
-    $http.post('/secondaryUser').then(function(response){
+  // console.log("INSIDE getAcctUsers secondary_user", secondary_user.account_id);
+  // console.log("INSIDE getAcctUsers userObject", userObject.user.id);
+  // if(secondary_user.account_id === userObject.user.id){
+    $http.get('/secondaryUser/'+ userObject.user.id).then(function(response){
       usersArrayObject.usersArray = response.data;
+      // console.log("back from server: ", response.data);
     });
-  }
+  // }
 };
 
-
-
-
-
-// getAcctUsers = function(){
-//   $http.get('/secondaryUser').then(function(response){
-//     console.log("inside getAcctUsers ####", response);
-//     usersArrayObject.usersArray = response.data;
-//   });
-// };
 
 
 getTasks = function(){
 $http.get('/task').then(function(response){
     // console.log("Check this out: " , response);
     taskObject.taskList = response.data;
-    console.log("*(&^(*^&*&(^))): ", response.data);
+    // console.log("*(&^(*^&*&(^))): ", response.data);
     // console.log('taskList inside get/task', taskObject.taskList);
     // console.log('response.data inside get/task: ', response.data);
         });
@@ -143,7 +137,7 @@ createTask = function(task){
   }//end of post /task
     //clears data bound task
 };//end of createTask
-console.log("userObject = ", userObject);
+
 return {
   login: login,
   registerUser: registerUser,
@@ -152,8 +146,9 @@ return {
   createTask: createTask,
   taskObject: taskObject,
   userObject: userObject,
-  getAcctUsers: getAcctUsers,
-  makeTest: makeTest
+  secondaryUserObject: secondaryUserObject,
+  getAcctUsers: getAcctUsers
+  // makeTest: makeTest
 };
 
 }]);//end of factory

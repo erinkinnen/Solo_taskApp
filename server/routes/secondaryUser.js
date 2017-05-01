@@ -25,20 +25,23 @@ var pool = new pg.Pool(config);
 // });
 console.log("HERE!");
 
-router.get('/', function(req, res, next) {
+router.get('/:secondaryUser', function(req, res, next) {
+  console.log("inside secondaryUser ", req.params.secondaryUser);
     pool.connect(function(errorConnectingToDB, client, done){
       if(errorConnectingToDB){
         console.log("Error Connecting to DB for secondaryUser List");
         res.send(500);
       } else {
-        client.query('SELECT * FROM "secondary_user" JOIN "users" ON "secondary_user"."account_id"= "users"."id"', function(queryError, result){
+        client.query('SELECT "secondary_user"."first_name", "secondary_user"."last_name","secondary_user"."id"  FROM "secondary_user" JOIN "users" ON "secondary_user"."account_id" = "users"."id" AND "secondary_user"."account_id"= $1', [req.params.secondaryUser], function(queryError, result){
           console.log("GET SECONDARY success******");
+
           done();
           if(queryError){
             console.log('Error making query for tasks on DB ');
             res.send(500);
           } else {
-            // console.log('result in query: ', result);
+            console.log('result in query: ', result);
+
             res.send(result.rows);
           }//end of 2nd else
         });//end of client.query

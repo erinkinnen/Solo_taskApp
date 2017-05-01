@@ -21,11 +21,11 @@ $scope.test = {
   name: ''
 };
 $scope.AccountService = AccountService.makeTest;
-$scope.test = function(day){
-  // console.log("inside registerSecondaryUser function");
-  console.log("inside test", day );
-  AccountService.makeTest(day);
-};
+// $scope.test = function(day){
+//   // console.log("inside registerSecondaryUser function");
+//   console.log("inside test", day );
+//   AccountService.makeTest(day);
+// };
     // $scope.message = '';
 $scope.AccountService = AccountService.userObject;
 $scope.getUserID = function(user){
@@ -36,8 +36,8 @@ $scope.getUserID = function(user){
     $scope.AccountService = AccountService.login;
 //entered on homepage
     $scope.logIn = function(user){
-      console.log('inside LOGIN on controller');
-      console.log("LOGIN: ",user);
+      // console.log('inside LOGIN on controller');
+      // console.log("LOGIN: ",user);
       AccountService.login(user);
     };
     //gives access to AccountService
@@ -45,14 +45,15 @@ $scope.getUserID = function(user){
     //writing function like this allows for console.log of info from html and allows
     //for more control over how function is handled.
     $scope.register = function(user){
-      console.log(user);
+      // console.log(user);
       AccountService.registerUser(user);
     };
 
     $scope.AccountService = AccountService.registerSecondaryUser;
     $scope.registerSecondary = function(secondary_user){
       // console.log("inside registerSecondaryUser function");
-      console.log("Sec User inside LoginController", secondary_user );
+      // console.log("Sec User inside LoginController", secondary_user );
+      // AccountService.secondaryUserObject = secondary_user;
       AccountService.registerSecondaryUser(secondary_user);
     };
 

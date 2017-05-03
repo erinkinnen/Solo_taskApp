@@ -112,6 +112,8 @@ getAcctUsers = function(){
   // if(secondary_user.account_id === userObject.user.id){
     $http.get('/secondaryUser/'+ userObject.user.id).then(function(response){
       secondaryUserObject.secondary_user = response.data;
+      // console.log("$$", $scope.secondaryUserObject);
+      // getAssignedList();
       // console.log("meow ", secondaryUserObject.secondary_user);
       // console.log("back from server: ", response.data);
     });
@@ -148,9 +150,11 @@ createTask = function(task){
     //clears data bound task
 };//end of createTask
 
-getAssignedList = function(user_id){
-  $http.get('/task/assignedTask/' + user_id).then(function(response){
+getAssignedList = function(user_id/*, selected date*/){
+  $http.get('/task/assignedTask/' + user_id/* + '/' + selected date*/).then(function(response){
     console.log("This is the get response: ", response);
+    assignedTaskObject.assignedTask = response.data;
+    console.log("assignedTaskObject.assignedTask", assignedTaskObject.assignedTask);
   });
 };
 
@@ -166,7 +170,8 @@ return {
   secondaryUserObject: secondaryUserObject,
   selectedSecondaryUser: selectedSecondaryUser,
   getAcctUsers: getAcctUsers,
-  getAssignedList: getAssignedList
+  getAssignedList: getAssignedList,
+  assignedTaskObject: assignedTaskObject
   // makeTest: makeTest
 };
 

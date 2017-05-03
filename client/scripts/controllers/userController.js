@@ -1,6 +1,6 @@
 console.log("UserController.js loaded");
 myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountService', function($scope, $http, $location, AccountService) {
-  // This happens after view/controller loads -- not ideal but it works for now.
+
   $scope.task = {
     name: '',
     description: '',

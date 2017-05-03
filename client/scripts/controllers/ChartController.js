@@ -24,23 +24,24 @@ myApp.controller('StaticChartController', [function(){
 myApp.controller('DynamicChartController', [ '$scope', 'AccountService', function($scope, AccountService){
   AccountService.getTasks();
   $scope.taskObject = AccountService.taskObject;
-// 
+//
 // console.log(tasks);
 //
-// countItems = function(tasks){
-//   var completeYes = 0;
-//   var tasks = [
-//     {name: 'math', completed: true},{name: 'english', completed: true},{name: 'geography', completed: false}
-//   ];
-//   for(i = 0; i < tasks.length; i++){
-//     if(tasks.completed === true){
-//       completeYes++;
-//     }
-//   }
-//   console.log("completedYes: ", completeYes);
-//   return completeYes;
-// };
-// countItems();
+var tasks = [
+  {name: 'math', completed: true},{name: 'english', completed: true},{name: 'geography', completed: false}
+];
+var countItems = function(tasks){
+  var completeYes = 0;
+
+  for(i = 0; i < tasks.length; i++){
+    if(tasks.completed === true){
+      completeYes++;
+    }
+  }
+  console.log("completedYes: ", completeYes);
+  return completeYes;
+};
+countItems(tasks);
 // console.log(tasks);
 // console.log("## ", tasks.completed === true);
 // var completed = [];

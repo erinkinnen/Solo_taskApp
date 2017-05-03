@@ -105,7 +105,7 @@ console.log("inside assignedT ask post:", req.body);
 });//end of post
 
 // Handles request for HTML file
-router.get('/assignedTask/:user_id', function(req, res, next) {
+router.get('/assignedTask/:user_id'/*/:selected date*/, function(req, res, next) {
     pool.connect(function(errorConnectingToDB, client, done){
       console.log("YAY@%@J^$@^^@");
       console.log("Inside assigned get ", req.params);
@@ -116,7 +116,7 @@ router.get('/assignedTask/:user_id', function(req, res, next) {
       } else {
         var secondary_user_id = parseInt(req.params.user_id)
         console.log(secondary_user_id);
-        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1', [secondary_user_id], function(queryError, result){
+        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1 AND "completed" = false', [secondary_user_id], function(queryError, result){
           console.log("HERE IS YOUR SUCCESS GET/:ASSIGNED");
           done();
           if(queryError){
@@ -132,11 +132,6 @@ router.get('/assignedTask/:user_id', function(req, res, next) {
     // res.sendFile(path.resolve(__dirname, '../public/views/register.html'));
 });//end of .get
 
-
-
-
-
-// Handles POST request with new task data
 router.put('/', function(req, res, next) {
 console.log("inside task PUT:", req.body);
 // var user = req.body.user;
@@ -147,9 +142,6 @@ console.log("inside task PUT:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-
-// console.log("task in PUT: ", task);
-
   pg.connect(connection, function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
@@ -169,8 +161,37 @@ console.log("inside task PUT:", req.body);
           }
         });//end of client.query
   });//end of pg.connect
-});//end of post
+});//end of put
 
-
+router.put('/assignedTask/', function(req, res, next) {
+console.log("inside assignedTask PUT:", req.body);
+// var user = req.body.user;
+  var updateTask = {
+    id: req.body.id,
+    name: req.body.name,
+    description: req.body.description,
+    duration: req.body.duration,
+    completed: req.body.completed
+  };
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log("Error connecting: ", err);
+      next(err);
+    }
+    // UPDATE "tasks" SET "completed"='true' WHERE "id" = req.body.id
+    client.query('UPDATE assigned_tasks SET "completed" = true WHERE "id"= $1',
+      [req.body.id],
+        function (err, result) {
+          client.end();
+          if(err) {
+            console.log("Error inserting data on user table: ", err);
+            next(err);
+          } else {
+            // res.send("hi");
+            res.sendStatus(200);
+          }
+        });//end of client.query
+  });//end of pg.connect
+});//end of put
 
 module.exports = router;

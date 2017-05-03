@@ -1,7 +1,7 @@
 
 <div class="container">
   <div ng-controller="AssignTaskController">
-  <h1 id="welcome" class="lead">WTF {{first_name}}!</h1>
+  <h1 id="welcome" class="lead">Assign task for {{selectedSecondaryUser.first_name}}!</h1>
   </div>
 
     <form ng-submit="addAssignedTask(assignedTask)">
@@ -31,7 +31,7 @@
       </div>
     </form>
     <div ng-repeat="task in assignedassignedTaskArray">
-      {{task.date}}
+    {{getAssignedList.task_name}}
     </div>
 
     <a href="#user">Cancel</a>

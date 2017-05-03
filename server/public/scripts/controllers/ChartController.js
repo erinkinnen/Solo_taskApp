@@ -22,28 +22,45 @@ myApp.controller('StaticChartController', [function(){
 
 
 myApp.controller('DynamicChartController', [ '$scope', 'AccountService', function($scope, AccountService){
-  // AccountService.getTasks();
-  // $scope.taskObject = AccountService.taskObject;
-
-// var tasks = [
-//   {name: 'math', completed: true},{name: 'english', completed: true},{name: 'geography', completed: false}
-// ];
-// var completed = 0;
-// var notCompleted = 0;
+  AccountService.getTasks();
+  $scope.taskObject = AccountService.taskObject;
+// 
+// console.log(tasks);
 //
-// var taskLength = tasks.length;
-// function counts(tasks){
-//   for(var i = 0; i <= taskLength; i++){
+// countItems = function(tasks){
+//   var completeYes = 0;
+//   var tasks = [
+//     {name: 'math', completed: true},{name: 'english', completed: true},{name: 'geography', completed: false}
+//   ];
+//   for(i = 0; i < tasks.length; i++){
 //     if(tasks.completed === true){
-//       completed = completed + 1;
-//   } if(tasks.completed === false){
-//       notCompleted = notCompleted + 1;
+//       completeYes++;
+//     }
 //   }
-//   }
-// }
-// console.log(completed);
-// console.log(notCompleted);
-// counts();
+//   console.log("completedYes: ", completeYes);
+//   return completeYes;
+// };
+// countItems();
+// console.log(tasks);
+// console.log("## ", tasks.completed === true);
+// var completed = [];
+// var notCompleted = 0;
+// // console.log("tasks.length: ", tasks.length);
+// $scope.countCompleted = function(tasks){
+//   // console.log("All Tasks: ",tasks);
+//   if(tasks.completed === true);
+//   count = count+1;
+//   console.log("pl", count);
+//   // completed.push(tasks);
+// };
+// countCompleted();
+  // var completed = tasks.filter(countCompleted);
+
+// console.log("Completed length: ", completed.length);
+
+// console.log("completed: ", completed);
+// console.log("not completed: ", notCompleted);
+// countCompleted();
   // var math = function(taskList.task){
   //   if(task.completed === false){
   //     var notCompleted = notCompleted + 1;
@@ -51,23 +68,23 @@ myApp.controller('DynamicChartController', [ '$scope', 'AccountService', functio
   //     var completed = completed + 1;
   //   }
   // };
-  var DynamicChart = document.getElementById("pieChart");
-  var myDynamicChart = new Chart(DynamicChart, {
-    type: 'pie',
-    data: {
-    labels: ["Complete", "Incomplete"],
-    datasets: [
-        {
-            data: [70, 30],
-            backgroundColor: [
-                "#9CBE2A",
-                "red",
-            ],
-            hoverBackgroundColor: [
-                "#52BE2A",
-                "#36A2EB",
-            ]
-        }]
-  }
-  });
+  // var DynamicChart = document.getElementById("pieChart");
+  // var myDynamicChart = new Chart(DynamicChart, {
+  //   type: 'pie',
+  //   data: {
+  //   labels: ["Complete", "Incomplete"],
+  //   datasets: [
+  //       {
+  //           data: [70, 30],
+  //           backgroundColor: [
+  //               "#9CBE2A",
+  //               "red",
+  //           ],
+  //           hoverBackgroundColor: [
+  //               "#52BE2A",
+  //               "#36A2EB",
+  //           ]
+  //       }]
+  // }
+  // });
 }]);//end of ChartController

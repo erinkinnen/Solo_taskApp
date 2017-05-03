@@ -39,7 +39,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/secondary', {
       templateUrl: '/views/templates/secondary.html',
-      controller: 'DynamicChartController'
+      controller: ['DynamicChartController',
+                  'SecondaryController']
     })
     .otherwise({
       redirectTo: 'home'

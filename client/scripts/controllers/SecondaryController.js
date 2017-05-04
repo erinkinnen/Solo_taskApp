@@ -38,7 +38,7 @@ $scope.clickCheckbox = function(task){
 
    AccountService.getTasks();
     $scope.assignedTaskObject = AccountService.assignedTaskObject;
-    console.log("This28",  AccountService.assignedTaskObject.assignedTask.length);
+    console.log("Task list length",  AccountService.assignedTaskObject.assignedTask.length);
 
     var isCompleteCounter = 0;
     var isNotCompleteCounter = 0;
@@ -50,8 +50,8 @@ $scope.clickCheckbox = function(task){
       }
     }
 
-
-
+console.log("isCompleteCounter", isCompleteCounter);
+console.log("isNotCompleteCounter", isNotCompleteCounter);
   // var math = function(){
   //   if($scope.assignedTask.completed === true){
   //     console.log("completed");

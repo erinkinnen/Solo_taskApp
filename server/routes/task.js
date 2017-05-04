@@ -116,7 +116,7 @@ router.get('/assignedTask/:user_id'/*/:selected date*/, function(req, res, next)
       } else {
         var secondary_user_id = parseInt(req.params.user_id);
         console.log(secondary_user_id);
-        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1 AND "completed" = false', [secondary_user_id], function(queryError, result){
+        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1', [secondary_user_id], function(queryError, result){
           console.log("HERE IS YOUR SUCCESS GET/:ASSIGNED" + result.rows);
           done();
           if(queryError){

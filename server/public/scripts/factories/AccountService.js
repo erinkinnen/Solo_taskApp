@@ -133,7 +133,7 @@ $http.get('/task').then(function(response){
     // console.log('response.data inside get/task: ', response.data);
         });
   };
-createTask = function(task){
+var createTask = function(task){
   if(task.name === '' || task.description === '') {
     message = "Enter a task name and description";
   } else {
@@ -152,7 +152,7 @@ createTask = function(task){
     //clears data bound task
 };//end of createTask
 
-getAssignedList = function(user_id, selectedDate){
+var getAssignedList = function(user_id, selectedDate){
   var dateToSearch = selectedDate || new Date();
   $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
     console.log("This is the get response: ", response);

@@ -6,13 +6,11 @@
             </div>
       </div>
 
-      <label>Search: <input ng-model="searchObject.task_name"></label>
-
       <div class="row">
         <div ng-controller="SecondaryController" >
           <label for="taskdate">Date:</label>
-          <input type="date" ng-model="searchObject"/>
- <!-- ng-change="changeDate()"  -->
+          <input type="date" ng-model="searchObject.date" ng-change="changeDate(searchObject.date)"/>
+          {{searchObject}}
           <!-- <div ng-repeat= "task in assignedTaskObject.assignedTask | myDateFormat: searchObject"> -->
             <div ng-repeat= "task in assignedTaskObject.assignedTask">
             <div ng-hide="task.completed">

@@ -1,7 +1,10 @@
 console.log("SecondaryController.js loaded");
 myApp.controller('SecondaryController', ['$scope', '$http', '$location', '$routeParams', 'AccountService', function($scope, $http, $location, $routeParams, AccountService) {
 
-$scope.searchObject = new Date();
+$scope.searchObject = {
+  date: new Date()
+};
+
 
 $scope.secondary_user_id = $routeParams.id;
 console.log("secondary_user_id", $scope.secondary_user_id);
@@ -14,11 +17,13 @@ console.log("secondary_user_id", $scope.secondary_user_id);
 $scope.assignedTaskObject = AccountService.assignedTaskObject;
 AccountService.getAssignedList($scope.secondary_user_id); //, todaysDate
 
-// $scope.changeDate = function(user_id, ){
-// selected date = newDate;
-// .then(AccountService.getAssignedList($scope.secondary_user_id, newDate);
-// }
-// scope dropdown change event
+$scope.changeDate = function(selectedDate){
+  console.log(selectedDate);
+//   console.log(searchObject);
+//   console.log("searchObject.date", $scope.searchObject.date);
+// selectedDate = $scope.searchObject.date;
+AccountService.getAssignedList($scope.secondary_user_id, selectedDate);
+};
 
 
 $scope.clickCheckbox = function(task){

@@ -45,3 +45,18 @@ myApp.config(['$routeProvider', function($routeProvider) {
       redirectTo: 'home'
     });
 }]);
+//
+// myApp.filter('myDateFormat', function myDateFormat($filter){
+//   console.log('found the filter');
+//   return function(actual, expected){
+//     // var tempActualDate= new Date(actual.date);
+//     //   var tempExpectedDate= new Date(expected.date);
+//     //   console.log('tempActualDate', $filter('date')(tempActualDate, "MMM-dd-yyyy"))
+//     //   console.log('tempExpectedDate', $filter('date')(tempExpectedDate, "MMM-dd-yyyy"))
+//     //   console.log($filter('date')(tempActualDate, "MMM-dd-yyyy") == $filter('date')(tempExpectedDate, "MMM-dd-yyyy"));
+//     //   return $filter('date')(tempActualDate, "MMM-dd-yyyy") == $filter('date')(tempExpectedDate, "MMM-dd-yyyy");
+//
+//     console.log('about to return filter restuls');
+//     return true;
+//   };
+// });

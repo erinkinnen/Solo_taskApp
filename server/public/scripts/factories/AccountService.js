@@ -14,9 +14,7 @@ var secondaryUserObject = {
   secondary_user: {}
 };
 
-var assignedTaskObject = {
-    tasksArray: [],
-  };
+
 
 var usersArrayObject = {
   usersArray: [],
@@ -31,22 +29,26 @@ var secondary_user = {
   email: '',
   age: ''
 };
-var test = {
-  date: '',
-  name: ''
-};
 
 var selectedSecondaryUser = {};
+
+ var assignedTaskObject = {
+
+  };
+
+
 
 // console.log("userObject.user BEFORE: ", userObject.user);
 // console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
 console.log("Before assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
 var addAssignedTask = function(task) {
+  console.log("Is task getting assigned");
   assignedTaskObject.tasksArray.push(task);
 console.log("After assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
 
 
 };
+  console.log("After After");
 
   login = function(user) {
     // console.log('inside LOGIN function');
@@ -158,6 +160,7 @@ getAssignedList = function(user_id/*, selected date*/){
   });
 };
 
+// changeDate = function()
 
 return {
   login: login,
@@ -171,8 +174,7 @@ return {
   selectedSecondaryUser: selectedSecondaryUser,
   getAcctUsers: getAcctUsers,
   getAssignedList: getAssignedList,
-  assignedTaskObject: assignedTaskObject
-  // makeTest: makeTest
+  assignedTaskObject: assignedTaskObject,
 };
 
 }]);//end of factory

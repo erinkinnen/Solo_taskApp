@@ -32,8 +32,11 @@ router.get('/:secondaryUser', function(req, res, next) {
         console.log("Error Connecting to DB for secondaryUser List");
         res.send(500);
       } else {
-        client.query('SELECT "secondary_user"."first_name", "secondary_user"."last_name","secondary_user"."id"  FROM "secondary_user" JOIN "users" ON "secondary_user"."account_id" = "users"."id" AND "secondary_user"."account_id"= $1', [req.params.secondaryUser], function(queryError, result){
-          console.log("GET SECONDARY success******");
+        client.query('SELECT "secondary_user"."first_name", "secondary_user"."last_name","secondary_user"."id"'  +
+        'FROM "secondary_user" JOIN "users" ON "secondary_user"."account_id" = "users"."id" '+
+        'AND "secondary_user"."account_id"= $1', [req.params.secondaryUser],
+        function(queryError, result){
+          console.log("GET SECONDARY success******", result);
 
           done();
           if(queryError){

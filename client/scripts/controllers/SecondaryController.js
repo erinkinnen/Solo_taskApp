@@ -1,7 +1,7 @@
 console.log("SecondaryController.js loaded");
 myApp.controller('SecondaryController', ['$scope', '$http', '$location', '$routeParams', 'AccountService', function($scope, $http, $location, $routeParams, AccountService) {
 
-// AccountService.getAssignedList;
+
 $scope.secondary_user_id = $routeParams.id;
 console.log("GGGG", $scope.secondary_user_id);
 // $scope.assignedTask = AccountService.assignedTask;
@@ -11,12 +11,13 @@ console.log("GGGG", $scope.secondary_user_id);
 //   $scope.secondaryUserObject = AccountService.secondaryUserObject;
 //   console.log("$$", $scope.secondaryUserObject);
 $scope.assignedTaskObject = AccountService.assignedTaskObject;
-AccountService.getAssignedList($scope.secondary_user_id /*, default to current date*/);
-console.log("AccountService.assignedTaskObject: ", AccountService.assignedTaskObjecst);
-
-
+AccountService.getAssignedList($scope.secondary_user_id); //, todaysDate
+// $scope.changeDate = function(){
+// selected date = newDate;
+// return newDate
+// }
 // scope dropdown change event
-// AccountService.getAssignedList($scope.secondary_user_id /*, selected date*/);
+// AccountService.getAssignedList($scope.secondary_user_id, newDate);
 
 $scope.clickCheckbox = function(task){
   console.log("secondary clickCheckbox");
@@ -30,7 +31,53 @@ $scope.clickCheckbox = function(task){
       // console.log('createTask put');
       console.log($scope.secondary_user_id);
       AccountService.getAssignedList($scope.secondary_user_id);
+
     });//end of put /task
   };//end of clickCheckbox
+
+
+   AccountService.getTasks();
+    $scope.assignedTaskObject = AccountService.assignedTaskObject;
+    console.log("This28",  AccountService.assignedTaskObject.assignedTask.length);
+
+    var isCompleteCounter = 0;
+    var isNotCompleteCounter = 0;
+    for(var counter=0; counter < $scope.assignedTaskObject.assignedTask.length ; counter++) {
+      if($scope.assignedTaskObject.assignedTask[counter].completed) {
+        isCompleteCounter ++;
+      } else {
+        isNotCompleteCounter++;
+      }
+    }
+
+
+
+  // var math = function(){
+  //   if($scope.assignedTask.completed === true){
+  //     console.log("completed");
+  //   } else {
+  //     console.log("not completed");
+  //   }
+  // };
+  //math();
+    var DynamicChart = document.getElementById("pieChart");
+    var myDynamicChart = new Chart(DynamicChart, {
+      type: 'pie',
+      data: {
+      labels: ["Complete", "Incomplete"],
+      datasets: [
+          {
+              data: [isCompleteCounter, isNotCompleteCounter],
+              backgroundColor: [
+                  "#9CBE2A",
+                  "red",
+              ],
+              hoverBackgroundColor: [
+                  "#52BE2A",
+                  "#36A2EB",
+              ]
+          }]
+    }
+    });
 
 }]);//end UserController

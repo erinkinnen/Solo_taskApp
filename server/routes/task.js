@@ -107,17 +107,17 @@ console.log("inside assignedT ask post:", req.body);
 // Handles request for HTML file
 router.get('/assignedTask/:user_id'/*/:selected date*/, function(req, res, next) {
     pool.connect(function(errorConnectingToDB, client, done){
-      console.log("YAY@%@J^$@^^@");
+      console.log("We are retesting");
       console.log("Inside assigned get ", req.params);
       if(errorConnectingToDB){
         console.log(errorConnectingToDB);
         console.log("HERE IS YOUR Error Connecting to DB GET/:ASSIGNED");
         res.send(400);
       } else {
-        var secondary_user_id = parseInt(req.params.user_id)
+        var secondary_user_id = parseInt(req.params.user_id);
         console.log(secondary_user_id);
         client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1 AND "completed" = false', [secondary_user_id], function(queryError, result){
-          console.log("HERE IS YOUR SUCCESS GET/:ASSIGNED");
+          console.log("HERE IS YOUR SUCCESS GET/:ASSIGNED" + result.rows);
           done();
           if(queryError){
             console.log('HERE IS YOUR Error making query to DB GET/:ASSIGNED', queryError);
@@ -188,7 +188,7 @@ console.log("inside assignedTask PUT:", req.body);
             next(err);
           } else {
             // res.send("hi");
-            res.sendStatus(200);
+            res.sendStatus(200, "YAY");
           }
         });//end of client.query
   });//end of pg.connect

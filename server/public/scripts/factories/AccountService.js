@@ -152,8 +152,9 @@ createTask = function(task){
     //clears data bound task
 };//end of createTask
 
-getAssignedList = function(user_id/*, selected date*/){
-  $http.get('/task/assignedTask/' + user_id/* + '/' + selected date*/).then(function(response){
+getAssignedList = function(user_id, selectedDate){
+  var dateToSearch = selectedDate || new Date();
+  $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
     console.log("This is the get response: ", response);
     assignedTaskObject.assignedTask = response.data;
     console.log("assignedTaskObject.assignedTask", assignedTaskObject.assignedTask);

@@ -1,9 +1,10 @@
 console.log("SecondaryController.js loaded");
 myApp.controller('SecondaryController', ['$scope', '$http', '$location', '$routeParams', 'AccountService', function($scope, $http, $location, $routeParams, AccountService) {
 
+$scope.searchObject = new Date();
 
 $scope.secondary_user_id = $routeParams.id;
-console.log("GGGG", $scope.secondary_user_id);
+console.log("secondary_user_id", $scope.secondary_user_id);
 // $scope.assignedTask = AccountService.assignedTask;
 // console.log("assignedTask",assignedTask);
 // console.log("THIS IS IT: ",assignedTask );
@@ -12,12 +13,13 @@ console.log("GGGG", $scope.secondary_user_id);
 //   console.log("$$", $scope.secondaryUserObject);
 $scope.assignedTaskObject = AccountService.assignedTaskObject;
 AccountService.getAssignedList($scope.secondary_user_id); //, todaysDate
-// $scope.changeDate = function(){
+
+// $scope.changeDate = function(user_id, ){
 // selected date = newDate;
-// return newDate
+// .then(AccountService.getAssignedList($scope.secondary_user_id, newDate);
 // }
 // scope dropdown change event
-// AccountService.getAssignedList($scope.secondary_user_id, newDate);
+
 
 $scope.clickCheckbox = function(task){
   console.log("secondary clickCheckbox");
@@ -43,7 +45,7 @@ $scope.clickCheckbox = function(task){
     var isCompleteCounter = 0;
     var isNotCompleteCounter = 0;
     for(var counter=0; counter < $scope.assignedTaskObject.assignedTask.length ; counter++) {
-      if($scope.assignedTaskObject.assignedTask[counter].completed) {
+      if($scope.assignedTaskObject.assignedTask[counter].completed === true) {
         isCompleteCounter ++;
       } else {
         isNotCompleteCounter++;
@@ -52,14 +54,7 @@ $scope.clickCheckbox = function(task){
 
 console.log("isCompleteCounter", isCompleteCounter);
 console.log("isNotCompleteCounter", isNotCompleteCounter);
-  // var math = function(){
-  //   if($scope.assignedTask.completed === true){
-  //     console.log("completed");
-  //   } else {
-  //     console.log("not completed");
-  //   }
-  // };
-  //math();
+
     var DynamicChart = document.getElementById("pieChart");
     var myDynamicChart = new Chart(DynamicChart, {
       type: 'pie',

@@ -36,7 +36,7 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
       //   console.log('failure: ', response);
       //   message = "Wrong!!";
       // }
-    }).then($scope.getAssignedList = function(user_id){
+    }).then(function(user_id){
       // console.log("inside getAssignedList ");
       console.log($scope.user_id);
       AccountService.getAssignedList($scope.user_id);

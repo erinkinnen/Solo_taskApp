@@ -117,7 +117,7 @@ router.get('/assignedTask/:user_id/:selectedDate', function(req, res, next) {
         var secondary_user_id = parseInt(req.params.user_id);
         var task_date = new Date(req.params.selectedDate);
         console.log(secondary_user_id);
-        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1 AND date=$2',
+        client.query('SELECT * FROM "assigned_tasks" WHERE "secondary_user_id" = $1 AND "date" = $2',
         [secondary_user_id, task_date], function(queryError, result){
           done();
           if(queryError){

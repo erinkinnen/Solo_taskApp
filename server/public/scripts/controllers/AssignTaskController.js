@@ -19,14 +19,23 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
   ];
 
 
+  // newdate = year + "/" + month + "/" + day;
   $scope.addAssignedTask = function(assignedTask){
+    console.log("DATE BEFORE: ", assignedTask.date);
     $scope.user_id = assignedTask.secondary_user_id.id;
+    var dateObj = assignedTask.date;
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    console.log("DID DATE CHANGE?", assignedTask.date);
     // console.log("%%%%, ", user_id);
+    // console.log('Assigned Task Array- before', assignedTaskArray);
     console.log("User_id & Assigned Task: ", $scope.user_id, assignedTask);
-    assignedTaskArray.push(assignedTask);
-    // console.log("BEFORE POST", assignedTask);
+    // assignedTaskArray.push(assignedTask);
+    // console.log('Assigned Task Array- after', assignedTaskArray);
+    console.log('Assigned Task RIGHT BEFORE post', assignedTask);
     $http.post('/task/:assignedTask', assignedTask).then(function(response) {
-      // console.log("######INSIDE POST", response);
+    console.log("INSIDE /task/:assignedTask post", response);
       // if(response.data.name) {
       //   console.log('addAssignedTask success: ', response.data);
       //   // userObject.user = response.data;
@@ -37,8 +46,7 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
       //   message = "Wrong!!";
       // }
     }).then(function(user_id){
-      // console.log("inside getAssignedList ");
-      console.log($scope.user_id);
+      console.log("$scope.user_id in post.then function", $scope.user_id);
       AccountService.getAssignedList($scope.user_id);
     });
 

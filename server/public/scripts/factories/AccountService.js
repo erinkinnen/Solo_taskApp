@@ -153,7 +153,10 @@ var createTask = function(task){
 };//end of createTask
 
 var getAssignedList = function(user_id, selectedDate){
+  console.log("inside getAssignedList user_id: ", user_id);
+  console.log("selectedDate BEFORE var: ", selectedDate);
   var dateToSearch = selectedDate || new Date();
+  console.log("selectedDate AFTER var: ", dateToSearch);
   $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
     console.log("This is the get response: ", response);
     assignedTaskObject.assignedTask = response.data;

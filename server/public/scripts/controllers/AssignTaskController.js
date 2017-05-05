@@ -23,10 +23,10 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
   $scope.addAssignedTask = function(assignedTask){
     console.log("DATE BEFORE: ", assignedTask.date);
     $scope.user_id = assignedTask.secondary_user_id.id;
-    var dateObj = assignedTask.date;
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
+    // var dateObj = assignedTask.date;
+    // var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    // var day = dateObj.getUTCDate();
+    // var year = dateObj.getUTCFullYear();
     console.log("DID DATE CHANGE?", assignedTask.date);
     // console.log("%%%%, ", user_id);
     // console.log('Assigned Task Array- before', assignedTaskArray);
@@ -47,7 +47,7 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
       // }
     }).then(function(user_id){
       console.log("$scope.user_id in post.then function", $scope.user_id);
-      AccountService.getAssignedList($scope.user_id);
+      AccountService.getAssignedList($scope.user_id, assignedTask.date);
     });
 
     // console.log('%%ASSIGNED TASK : ', AccountService.selectedSecondaryUser, assignedTask.task);

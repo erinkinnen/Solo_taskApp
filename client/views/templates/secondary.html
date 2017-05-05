@@ -1,11 +1,23 @@
 <div class="container">
-      <h1>Welcome, </h1>
       <div ng-controller="SecondaryController">
             <div col-sm-12 style="width: 55% float: right position: relative ">
             <canvas id="pieChart" height="300" width="300" border="1px"></canvas>
             </div>
       </div>
 
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="page-header">
+        <h1 id="welcome" class="lead">Welcome, {{first_name}}!</h1>
+      </div>
+      <div ng-controller="SecondaryController">
+            <div col-sm-12 style="width: 55% float: right position: relative ">
+            <canvas id="pieChart" height="300" width="300" border="1px"></canvas>
+            </div>
+      </div>
       <div class="row">
         <div ng-controller="SecondaryController" >
           <label for="taskdate">Date:</label>
@@ -20,9 +32,13 @@
                     <!-- {{task.date | date: "MM/dd/yyyy"}} vs {{searchObject | date: "MM/dd/yyyy"}} -->
               </div>
           </div>
-
-
-        </div>
+\        </div>
       </div>
 
+
+
+
+
+    </div>
+  </div>
 </div>

@@ -37,47 +37,51 @@ $scope.clickCheckbox = function(task){
     $http.put('task/assignedTask/', updateTask).then(function(response) {
       // console.log('createTask put');
       console.log($scope.secondary_user_id);
-      AccountService.getAssignedList($scope.secondary_user_id);
+      AccountService.getAssignedList($scope.secondary_user_id).then(chartUpdate);
 
     });//end of put /task
   };//end of clickCheckbox
 
 
-   AccountService.getTasks();
-    $scope.assignedTaskObject = AccountService.assignedTaskObject;
-    console.log("Task list length",  $scope.assignedTaskObject.length);
+   AccountService.getTasks().then(chartUpdate);
 
-    var isCompleteCounter = 0;
-    var isNotCompleteCounter = 0;
-    for(var counter=0; counter < $scope.assignedTaskObject.assignedTask.length ; counter++) {
-      if($scope.assignedTaskObject.assignedTask[counter].completed === true) {
-        isCompleteCounter ++;
-      } else {
-        isNotCompleteCounter++;
-      }
-    }
+   function chartUpdate(){
+     $scope.assignedTaskObject = AccountService.assignedTaskObject;
+     console.log("the object ", $scope.assignedTaskObject.assignedTask);
+     console.log("Task list length",  $scope.assignedTaskObject.assignedTask.length);
 
-console.log("isCompleteCounter", isCompleteCounter);
-console.log("isNotCompleteCounter", isNotCompleteCounter);
+     var isCompleteCounter = 0;
+     var isNotCompleteCounter = 0;
+     for(var counter=0; counter < $scope.assignedTaskObject.assignedTask.length ; counter++) {
+       if($scope.assignedTaskObject.assignedTask[counter].completed === true) {
+         isCompleteCounter ++;
+       } else {
+         isNotCompleteCounter++;
+       }
+     }
 
-    var DynamicChart = document.getElementById("pieChart");
-    var myDynamicChart = new Chart(DynamicChart, {
-      type: 'pie',
-      data: {
-      labels: ["Complete", "Incomplete"],
-      datasets: [
-          {
-              data: [isCompleteCounter, isNotCompleteCounter],
-              backgroundColor: [
-                  "#9CBE2A",
-                  "red",
-              ],
-              hoverBackgroundColor: [
-                  "#52BE2A",
-                  "#36A2EB",
-              ]
-          }]
-    }
-    });
+ console.log("isCompleteCounter", isCompleteCounter);
+ console.log("isNotCompleteCounter", isNotCompleteCounter);
 
+     var DynamicChart = document.getElementById("pieChart");
+     var myDynamicChart = new Chart(DynamicChart, {
+       type: 'pie',
+       data: {
+       labels: ["Complete", "Incomplete"],
+       datasets: [
+           {
+               data: [isCompleteCounter, isNotCompleteCounter],
+               backgroundColor: [
+                   "#9CBE2A",
+                   "red",
+               ],
+               hoverBackgroundColor: [
+                   "#52BE2A",
+                   "#36A2EB",
+               ]
+           }]
+     }
+     });
+
+   }
 }]);//end UserController

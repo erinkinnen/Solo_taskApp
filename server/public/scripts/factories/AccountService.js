@@ -33,14 +33,14 @@ var secondary_user = {
 var selectedSecondaryUser = {};
 
  var assignedTaskObject = {
-
+   assignedTask: []
   };
 
 
 
 // console.log("userObject.user BEFORE: ", userObject.user);
 // console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
-console.log("Before assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
+// console.log("Before assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArray);
 var addAssignedTask = function(task) {
   console.log("Is task getting assigned");
   assignedTaskObject.tasksArray.push(task);
@@ -125,13 +125,13 @@ getAcctUsers = function(){
 
 
 getTasks = function(){
-$http.get('/task').then(function(response){
+return $http.get('/task').then(function(response){
     // console.log("Check this out: " , response);
     taskObject.taskList = response.data;
     // console.log("*(&^(*^&*&(^))): ", response.data);
     // console.log('taskList inside get/task', taskObject.taskList);
     // console.log('response.data inside get/task: ', response.data);
-        });
+  });
   };
 var createTask = function(task){
   if(task.name === '' || task.description === '') {
@@ -157,7 +157,7 @@ var getAssignedList = function(user_id, selectedDate){
   console.log("selectedDate BEFORE var: ", selectedDate);
   var dateToSearch = selectedDate || new Date();
   console.log("selectedDate AFTER var: ", dateToSearch);
-  $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
+  return $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
     console.log("This is the get response: ", response);
     assignedTaskObject.assignedTask = response.data;
     console.log("assignedTaskObject.assignedTask", assignedTaskObject.assignedTask);

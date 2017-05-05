@@ -48,6 +48,7 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
     }).then(function(user_id){
       console.log("$scope.user_id in post.then function", $scope.user_id);
       AccountService.getAssignedList($scope.user_id, assignedTask.date);
+        // $location.path('/user');
     });
 
     // console.log('%%ASSIGNED TASK : ', AccountService.selectedSecondaryUser, assignedTask.task);

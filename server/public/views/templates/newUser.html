@@ -1,19 +1,30 @@
-<p>newUser.html</p>
-<form ng-submit="registerSecondary(secondary_user)">
 
-  <div>
-      <label for="firstname">First Name:</label>
-      <input type="text" ng-model="secondary_user.first_name" />
-  </div>
-  <div>
-      <label for="lastname">Last Name:</label>
-      <input type="text" ng-model="secondary_user.last_name" />
-  </div>
-  <div>
-      <label for="age">Age:</label>
-      <input type="text" ng-model="secondary_user.age" />
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-  <input class="btn btn-default" type="submit" name="submit" value="Add User" />
-  <a href="#user">Cancel</a>
-</form>
+      <div class="page-header">
+        <h1 id="welcome" class="lead">Add A New User</h1>
+      </div>
+
+        <form ng-submit="registerSecondary(secondary_user)">
+          <div>
+              <label for="firstname">First Name:</label>
+              <input type="text" ng-model="secondary_user.first_name" />
+          </div>
+          <div>
+              <label for="lastname">Last Name:</label>
+              <input type="text" ng-model="secondary_user.last_name" />
+          </div>
+          <div>
+              <label for="age">Age:</label>
+              <input type="text" ng-model="secondary_user.age" />
+          </div>
+
+          <input class="btn btn-default" type="submit" name="submit" value="Add User" />
+          <a href="#user">Cancel</a>
+        </form>
+
+    </div>
+  </div>
+</div>

@@ -1,20 +1,35 @@
-<p>newTask.html</p>
-<form ng-submit="newTask(task)">
-  <div>
-      <label for="taskname">Task Name:</label>
-      <input type="text" ng-model="task.name" />
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+
+
+      <div class="page-header">
+        <h1 id="welcome" class="lead">Add A New Task</h1>
+      </div>
+
+
+        <form ng-submit="newTask(task)">
+          <div>
+              <label for="taskname">Task Name:</label>
+              <input type="text" ng-model="task.name" />
+          </div>
+          <div>
+              <label for="description">Task Description:</label>
+              <input type="text" ng-model="task.description" />
+          </div>
+          <!-- <div>
+              <label for="duration">Expected Duration:</label>
+              <input type="text" ng-model="task.duration" />
+          </div>
+          <div> -->
+              <input class="btn btn-default" type="submit" name="submit" value="Create Task"/>
+              <br>
+              <a href="#user">Cancel</a>
+          </div>
+        </form>
+
+    </div>
   </div>
-  <div>
-      <label for="description">Task Description:</label>
-      <input type="text" ng-model="task.description" />
-  </div>
-  <div>
-      <label for="duration">Expected Duration:</label>
-      <input type="text" ng-model="task.duration" />
-  </div>
-  <div>
-      <input class="btn btn-default" type="submit" name="submit" value="Create Task"/>
-      <br>
-      <a href="#user">Cancel</a>
-  </div>
-</form>
+</div>

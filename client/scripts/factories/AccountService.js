@@ -48,7 +48,6 @@ console.log("After assignedTaskObject.tasksArray: ",assignedTaskObject.tasksArra
 
 
 };
-  console.log("After After");
 
   login = function(user) {
     // console.log('inside LOGIN function');
@@ -140,6 +139,7 @@ var createTask = function(task){
     //created newTask and send copy in order to grab data bound object, send it
     //to database AND be able to clear data binding
     var newTask = angular.copy(task);
+    console.log("This is newTask: ", newTask);
     // console.log(newTask);
     //must post newTask copy to DB
     $http.post('/task', newTask).then(function(response) {

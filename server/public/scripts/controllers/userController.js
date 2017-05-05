@@ -58,6 +58,7 @@ myApp.controller('UserController', ['$scope', '$http', '$location', 'AccountServ
     $scope.secondaryUserObject = AccountService.secondaryUserObject;
 
   $scope.newTask = function(task){
+    console.log(" This is the task",task);
     AccountService.createTask(task);
     $scope.task = {};
 };

@@ -58,10 +58,11 @@ router.post('/', function(req, res, next) {
       console.log("Error connecting: ", err);
       next(err);
     }
-    client.query("INSERT INTO tasks (name, description, duration, completed) VALUES ($1, $2, $3, $4) RETURNING id",
-      [task.name, task.description, task.duration, task.completed],
+    client.query("INSERT INTO tasks (name, description, completed) VALUES ($1, $2, $3) RETURNING id",
+      [task.name, task.description, task.completed],
         function (err, result) {
-          client.end();
+          done();
+          //client.end();
           if(err) {
             console.log("Error inserting data on user table: ", err);
             next(err);
@@ -92,7 +93,8 @@ console.log("inside assignedT ask post:", req.body);
     client.query("INSERT INTO assigned_tasks (secondary_user_id, date, task_name, completed) VALUES ($1, $2, $3, $4) RETURNING id",
       [assignedTask.  secondary_user_id, assignedTask.date, assignedTask.task_name, assignedTask.completed],
         function (err, result) {
-          client.end();
+          done();
+          //client.end();
           if(err) {
             console.log("Error inserting data on assigned_tasks table: ", err);
             next(err);
@@ -153,7 +155,8 @@ console.log("inside task PUT:", req.body);
     client.query('UPDATE tasks SET "completed" = true WHERE "id"= $1',
       [req.body.id],
         function (err, result) {
-          client.end();
+          done();
+          //client.end();
           if(err) {
             console.log("Error inserting data on user table: ", err);
             next(err);
@@ -184,7 +187,8 @@ console.log("inside assignedTask PUT:", req.body);
     client.query('UPDATE assigned_tasks SET "completed" = true WHERE "id"= $1',
       [req.body.id],
         function (err, result) {
-          client.end();
+          done();
+          //client.end();
           if(err) {
             console.log("Error inserting data on user table: ", err);
             next(err);

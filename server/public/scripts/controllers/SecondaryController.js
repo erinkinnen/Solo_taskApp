@@ -22,7 +22,7 @@ $scope.changeDate = function(selectedDate){
 //   console.log(searchObject);
 //   console.log("searchObject.date", $scope.searchObject.date);
 // selectedDate = $scope.searchObject.date;
-AccountService.getAssignedList($scope.secondary_user_id, selectedDate);
+AccountService.getAssignedList($scope.secondary_user_id, selectedDate).then(chartUpdate);
 };
 
 

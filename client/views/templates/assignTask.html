@@ -1,7 +1,7 @@
 
 <div class="container">
   <div ng-controller="AssignTaskController">
-  <h1 id="welcome" class="lead">Assign task for {{selectedSecondaryUser.first_name}}!</h1>
+  <h1 id="welcome" class="lead">Assign task for {{selectedSecondaryUser.first_name}}</h1>
   </div>
 
     <form ng-submit="addAssignedTask(assignedTask)">
@@ -9,16 +9,7 @@
           <label for="taskdate">Date:</label>
           <input type="date" ng-model="assignedTask.date"/>
       </div>
-      <!-- <div>
-          <label for="task_selector">Task:</label>
-          <select class="" name="" ng-model="selected_task" ng-options="task.name for task in taskObject.taskList"/>
-            <option value="Choose a task"></option> <br>
-      </div> -->
 
-      <!-- <div>
-          <label for="duration">Expected Duration:</label>
-          <input type="text" ng-model="task.duration"/>
-      </div> -->
       <div>
           <label for="task_selector">Task:</label>
           <select class="" name="" ng-model="assignedTask.task" ng-options="task.name for task in taskObject.taskList"/>
@@ -30,23 +21,13 @@
           <br>
       </div>
     </form>
-    <div ng-repeat="task in assignedassignedTaskArray">
-    {{getAssignedList.task_name}}
-    {{getAssignedList.completed}}
-    </div>
-
+                <div ng-repeat= "task in assignedTaskObject.assignedTask">
+                  <p>{{task.task_name}}</p>
+                </div>
     <a href="#user">Cancel</a>
 
-    <!-- <button class="btn btn-default" ng-click="newUser()">Add New User</button>
-    <button class="btn btn-default" ng-click="logout()">Log Out</button>
-<data ng-controller="TaskListController">
-  <button class="btn btn-default" ng-click="newTaskView()">Add New Task</button>
-</data>
-<input type="date" name="" value="">
-    <div class="row">
-
-    </div>
 
 
-</div>
+
+
 </div>

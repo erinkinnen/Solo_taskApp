@@ -4,7 +4,7 @@ myApp.controller('TaskListController', ['$scope', '$http', '$location', function
   $scope.task = {
     name: '',
     description: '',
-    duration: ''
+    // duration: ''
   };
   $scope.newTaskView = function(){
     // console.log("this is where we start ", $location.path());

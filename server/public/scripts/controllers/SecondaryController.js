@@ -45,7 +45,7 @@ $scope.clickCheckbox = function(task){
 
    AccountService.getTasks();
     $scope.assignedTaskObject = AccountService.assignedTaskObject;
-    console.log("Task list length",  AccountService.assignedTaskObject.assignedTask.length);
+    console.log("Task list length",  $scope.assignedTaskObject.length);
 
     var isCompleteCounter = 0;
     var isNotCompleteCounter = 0;

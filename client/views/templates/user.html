@@ -1,26 +1,19 @@
 <div class="container">
     <h1 id="welcome" class="lead">Welcome, {{first_name}}!</h1>
-<!-- <form ng-submit="test(day)">
-  <div>
-      <label for="date">Date:</label>
-      <input type="date" ng-model="test.date">
-  </div>
-  <div>
-      <label for="name">Name:</label>
-      <input type="text" ng-model="test.name" />
-  </div> -->
-  <!-- <input class="btn btn-default" type="submit" name="submit" value="Test" />
-</form> -->
+
 <div class="row">
   <div ng-controller="UserController">
-    <table>
-      <label>Students</label>
-      <tr ng-repeat="secondary in secondaryUserObject.secondary_user">
-        <td>
-          {{secondary.first_name}}
-          <button class="btn btn-default" ng-click="assignTaskView($index)">Assign Tasks</button>
-        </td>
-      </tr>
+    <table class = "table-striped table-hover col-md-6">
+    <tr>
+      <th col-md-6>Student</th>
+      <th col-md-6>Assign Tasks</th>
+    </tr>
+    <tr ng-repeat="secondary in secondaryUserObject.secondary_user">
+      <td col-md-6>
+        {{secondary.first_name}}
+        <button class="btn btn-default" ng-click="assignTaskView($index)">Assign Tasks</button>
+      </td>
+    </tr>
     </table>
 
   </div>
@@ -35,9 +28,8 @@
   <button class="btn btn-default" ng-click="newTaskView()">Add New Task</button>
 </div>
 
-<input type="date" name="" value="">
 
-<div class="row">
+<!-- <div class="row">
   <div ng-controller="UserController" >
 
       <div ng-repeat= "task in taskObject.taskList">
@@ -48,7 +40,7 @@
           </div>
       </div>
   </div>
-</div>
+</div> -->
 
 
 </div>

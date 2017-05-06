@@ -18,18 +18,21 @@ AccountService.getAssignedList($scope.secondary_user_id, selectedDate).then(char
 console.log("XXX assignedTaskObject ", $scope.assignedTaskObject);
 console.log("XXX assignedTaskObject.assignedTask ", $scope.assignedTaskObject.assignedTask);
 console.log("XXX assignedTaskObject.assignedTask.date ", $scope.assignedTaskObject.assignedTask.date);
-$scope.clickCheckbox = function(task){
+
+$scope.clickCheckbox = function(task, clickedDate){
   console.log("CLICKED!!!!! secondary clickCheckbox");
   // console.log("This is task before: ", task);
   task.completed = true;
   // console.log("This is task after: ", task);
   var updateTask = task;
+  var grabbedDate = angular.copy(clickedDate);
+  console.log(grabbedDate);
   // console.log(newTask);
   //must post newTask copy to DB
     $http.put('task/assignedTask/', updateTask).then(function(response) {
       // console.log('createTask put');
       console.log($scope.secondary_user_id);
-      AccountService.getAssignedList($scope.secondary_user_id, assignedTask.date).then(chartUpdate);
+      AccountService.getAssignedList($scope.secondary_user_id, grabbedDate).then(chartUpdate);
 
     });//end of put /task
   };//end of clickCheckbox
@@ -64,12 +67,12 @@ $scope.clickCheckbox = function(task){
            {
                data: [isCompleteCounter, isNotCompleteCounter],
                backgroundColor: [
-                   "#9CBE2A",
-                   "red",
-               ],
-               hoverBackgroundColor: [
-                   "#52BE2A",
-                   "#36A2EB",
+                 "#9CBE2A",
+                 "#428bca",
+             ],
+             hoverBackgroundColor: [
+                 "#52BE2A",
+                 "#36A2EB",
                ]
            }]
      }

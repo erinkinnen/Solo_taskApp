@@ -31,7 +31,7 @@ pool.on('acquire', function (client) {
 var connectCount = 0;
 pool.on('connect', function () {
   connectCount++;
-  // console.log('client connected: ', connectCount);
+  console.log('6 client connected: ', connectCount);
 });
 
 passport.serializeUser(function(user, done) {

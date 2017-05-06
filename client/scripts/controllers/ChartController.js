@@ -9,7 +9,7 @@ myApp.controller('StaticChartController', [function(){
             data: [60, 40],
             backgroundColor: [
                 "#9CBE2A",
-                "#2956B2",
+                "#428bca",
             ],
             hoverBackgroundColor: [
                 "#52BE2A",

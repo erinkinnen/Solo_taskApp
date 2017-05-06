@@ -6,12 +6,12 @@
 
 
               <div ng-controller="StaticChartController">
-                    <div class="float: right position: relative ">
+                    <!-- <div class="float: right position: relative "> -->
                     <canvas id="pieChart" height="100%" width="100%" border="1px"></canvas>
                     </div>
               </div>
 
-              <form ng-submit="logIn(user)">
+              <form class="col-md-offset-4 col-md-4 col-md-offset-4 "ng-submit="logIn(user)">
                 <div>
                     <label for="username">Username:</label>
                     <input type="text" ng-model="user.username"/>
@@ -21,7 +21,7 @@
                     <input type="password" ng-model="user.password" />
                 </div>
                 <div>
-                    <input class="btn btn-default" type="submit" name="submit" value="Log In" />
+                    <input class="btn btn-primary col-md-offset-5 col-md-2 col-md-offset-5 " type="submit" name="submit" value="Log In" />
                     <br>
                     <a href="#register">Create New Account</a>
                 </div>

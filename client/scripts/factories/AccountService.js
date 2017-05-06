@@ -36,7 +36,9 @@ var selectedSecondaryUser = {};
    assignedTask: []
   };
 
-
+// var dateObject = {
+//   date: ''
+// };
 
 // console.log("userObject.user BEFORE: ", userObject.user);
 // console.log("secondaryUserObject BEFORE: ", secondaryUserObject.secondary_user);
@@ -163,6 +165,13 @@ var getAssignedList = function(user_id, selectedDate){
   });
 };
 
+// var preserveDate = function(selectedDate){
+//   if(selectedDate !== new Date());
+//   date = selectedDate;
+// } else {
+//   date = new Date();
+// }
+// console.log("HERE IS DATE ",date);
 // changeDate = function()
 
 return {
@@ -178,6 +187,7 @@ return {
   getAcctUsers: getAcctUsers,
   getAssignedList: getAssignedList,
   assignedTaskObject: assignedTaskObject,
+  // dateObject: dateObject
 };
 
 }]);//end of factory

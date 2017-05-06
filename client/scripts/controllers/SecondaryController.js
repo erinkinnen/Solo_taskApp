@@ -8,26 +8,18 @@ $scope.searchObject = {
 
 $scope.secondary_user_id = $routeParams.id;
 console.log("secondary_user_id", $scope.secondary_user_id);
-// $scope.assignedTask = AccountService.assignedTask;
-// console.log("assignedTask",assignedTask);
-// console.log("THIS IS IT: ",assignedTask );
-// AccountService.getAcctUsers();
-//   $scope.secondaryUserObject = AccountService.secondaryUserObject;
-//   console.log("$$", $scope.secondaryUserObject);
 $scope.assignedTaskObject = AccountService.assignedTaskObject;
 AccountService.getAssignedList($scope.secondary_user_id); //, todaysDate
 
 $scope.changeDate = function(selectedDate){
-  console.log(selectedDate);
-//   console.log(searchObject);
-//   console.log("searchObject.date", $scope.searchObject.date);
-// selectedDate = $scope.searchObject.date;
+console.log("WHEN IS DATE CHANGE HAPPENING?",selectedDate);
 AccountService.getAssignedList($scope.secondary_user_id, selectedDate).then(chartUpdate);
 };
-
-
+console.log("XXX assignedTaskObject ", $scope.assignedTaskObject);
+console.log("XXX assignedTaskObject.assignedTask ", $scope.assignedTaskObject.assignedTask);
+console.log("XXX assignedTaskObject.assignedTask.date ", $scope.assignedTaskObject.assignedTask.date);
 $scope.clickCheckbox = function(task){
-  console.log("secondary clickCheckbox");
+  console.log("CLICKED!!!!! secondary clickCheckbox");
   // console.log("This is task before: ", task);
   task.completed = true;
   // console.log("This is task after: ", task);
@@ -37,7 +29,7 @@ $scope.clickCheckbox = function(task){
     $http.put('task/assignedTask/', updateTask).then(function(response) {
       // console.log('createTask put');
       console.log($scope.secondary_user_id);
-      AccountService.getAssignedList($scope.secondary_user_id).then(chartUpdate);
+      AccountService.getAssignedList($scope.secondary_user_id, assignedTask.date).then(chartUpdate);
 
     });//end of put /task
   };//end of clickCheckbox

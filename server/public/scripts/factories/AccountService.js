@@ -158,7 +158,6 @@ var getAssignedList = function(user_id, selectedDate){
   var dateToSearch = selectedDate || new Date();
   console.log("selectedDate AFTER var: ", dateToSearch);
   return $http.get('/task/assignedTask/' + user_id + '/' + dateToSearch).then(function(response){
-    console.log("This is the get response: ", response);
     assignedTaskObject.assignedTask = response.data;
     console.log("assignedTaskObject.assignedTask", assignedTaskObject.assignedTask);
   });

@@ -23,7 +23,6 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
     $scope.user_id = assignedTask.secondary_user_id.id;
 
     $http.post('/task/:assignedTask', assignedTask).then(function(response) {
-      console.log("Can I use this?: ", response);//NO
     }).then(function(user_id){
       AccountService.getAssignedList($scope.user_id, assignedTask.date).then(function(){
 
@@ -34,7 +33,6 @@ myApp.controller('AssignTaskController', ['$scope', '$http', '$location', 'Accou
   };
 // console.log("here's the array: ", assignedTaskArray);
   var assignedTaskList = this;
-  console.log("Possibility", assignedTaskList);
 
   // console.log('PP START AssignedTaskList: ',assignedTaskList);
   assignedTaskList.AssignedTaskObject = AccountService.AssignedTaskObject;

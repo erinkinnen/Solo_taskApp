@@ -5,9 +5,11 @@ $scope.searchObject = {
   date: new Date()
 };
 
-
+// console.log("############### ", $scope.secondary_user_id);
 $scope.secondary_user_id = $routeParams.id;
-console.log("secondary_user_id", $scope.secondary_user_id);
+// var firstName = $scope.secondary_user_id.first_name;
+// console.log("@@@@@@@@@@@@@@@@@@", firstName);
+// console.log("secondary_user_id", $scope.secondary_user_id);
 $scope.assignedTaskObject = AccountService.assignedTaskObject;
 AccountService.getAssignedList($scope.secondary_user_id); //, todaysDate
 
@@ -15,9 +17,6 @@ $scope.changeDate = function(selectedDate){
 console.log("WHEN IS DATE CHANGE HAPPENING?",selectedDate);
 AccountService.getAssignedList($scope.secondary_user_id, selectedDate).then(chartUpdate);
 };
-console.log("XXX assignedTaskObject ", $scope.assignedTaskObject);
-console.log("XXX assignedTaskObject.assignedTask ", $scope.assignedTaskObject.assignedTask);
-console.log("XXX assignedTaskObject.assignedTask.date ", $scope.assignedTaskObject.assignedTask.date);
 
 $scope.clickCheckbox = function(task, clickedDate){
   console.log("CLICKED!!!!! secondary clickCheckbox");
@@ -37,7 +36,9 @@ $scope.clickCheckbox = function(task, clickedDate){
     });//end of put /task
   };//end of clickCheckbox
 
-
+var test = {
+  crazy: 'yes'
+};
    AccountService.getTasks().then(chartUpdate);
 
    function chartUpdate(){

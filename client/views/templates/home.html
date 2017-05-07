@@ -1,31 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-offset-4 col-md-4 col-md-offset-4">
-
-
-
-
+    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-offset-2 col-md-8 col-md-offset-2">
+      <div class="instructions">
+          <div class="container">
+              <h1 class="lead2">Task App</h1>
+          </div>
+      </div>
               <div ng-controller="StaticChartController">
                     <!-- <div class="float: right position: relative "> -->
                     <canvas id="pieChart" height="100%" width="100%" border="1px"></canvas>
-                    </div>
               </div>
 
-              <form class="col-md-offset-4 col-md-4 col-md-offset-4 "ng-submit="logIn(user)">
-                <div>
+
+              <form ng-submit="logIn(user)">
+                <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" ng-model="user.username"/>
+                    <input class="form-control" type="text" ng-model="user.username"/>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" ng-model="user.password" />
+                    <input class="form-control" type="password" ng-model="user.password" />
                 </div>
-                <div>
-                    <input class="btn btn-primary col-md-offset-5 col-md-2 col-md-offset-5 " type="submit" name="submit" value="Log In" />
+                <div class="form-group">
+                    <input class="btn btn-primary btn-md btn-block" type="submit" name="submit" value="Log In" />
                     <br>
-                    <a href="#register">Create New Account</a>
+                    <a class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-offset-2 col-md-8 col-md-offset-2 cancelLink" href="#register">Create New Account</a>
                 </div>
               </form>
+            </div>
       </div>
   </div>
-</div>

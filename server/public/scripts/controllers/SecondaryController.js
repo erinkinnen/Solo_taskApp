@@ -4,7 +4,7 @@ myApp.controller('SecondaryController', ['$scope', '$http', '$location', '$route
 $scope.searchObject = {
   date: new Date()
 };
-
+$scope.selectedSecondaryUser = AccountService.selectedSecondaryUser;
 // console.log("############### ", $scope.secondary_user_id);
 $scope.secondary_user_id = $routeParams.id;
 // var firstName = $scope.secondary_user_id.first_name;

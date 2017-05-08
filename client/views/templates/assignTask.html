@@ -8,15 +8,15 @@
           <form ng-submit="addAssignedTask(assignedTask)">
             <div class="form-group">
                 <label for="taskdate">Date:</label>
-                <input type="date" class= "form-control carat" ng-model="assignedTask.date"/>
+                <input type="date" class= "form-control" ng-model="assignedTask.date"/>
                 <!-- <span class="carat"></span> -->
             </div>
             <div class="form-group">
                 <label for="task_selector">Task:</label>
                 <select class="form-control list" ng-model="assignedTask.task" ng-options="task.name for task in taskObject.taskList"/>
                 <div ng-repeat= "task in assignedTaskObject.assignedTask">
-                  <p>{{task.task_name}}</p>
-                  <span class="carat"></span>
+                  <p>{{task.task_name}}<span class="caret"></span></p>
+
                 </div>
             </div>
             <!-- <div class="form-group"> -->

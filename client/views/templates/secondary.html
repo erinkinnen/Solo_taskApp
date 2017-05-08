@@ -1,6 +1,6 @@
 <div class="container">
     <div class="page-header">
-      <h1 id="welcome" class="lead">Welcome, {{selectedSecondaryUser.first_name}}!</h1>
+      <h1 id="welcome" class="lead">You got this {{selectedSecondaryUser.first_name}}!</h1>
     </div>
     <div class="row">
       <div ng-controller="SecondaryController">
@@ -21,9 +21,9 @@
           <input type="date" ng-model="searchObject.date" ng-change="changeDate(searchObject.date)"/>
           <!-- {{searchObject}} -->
           <!-- <div ng-repeat= "task in assignedTaskObject.assignedTask | myDateFormat: searchObject"> -->
-            <div ng-repeat= "task in assignedTaskObject.assignedTask">
+            <div class="space" ng-repeat= "task in assignedTaskObject.assignedTask">
             <div ng-hide="task.completed">
-              <button type="btn btn-default" ng-model="task" ng-click="clickCheckbox(task, searchObject.date)">Done</button>
+              <button class="btn btn-primary btn-xs space"type="btn btn-default" ng-model="task" ng-click="clickCheckbox(task, searchObject.date)">Done</button>
               <!-- <span>{{task.date | date: 'shortDate'}}</span> -->
                     {{task.task_name}}
                     <!-- {{task.date | date: "MM/dd/yyyy"}} vs {{searchObject | date: "MM/dd/yyyy"}} -->

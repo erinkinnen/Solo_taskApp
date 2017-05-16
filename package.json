@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-material": "^1.1.4",
+    "angular-moment-picker": "^0.9.11",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.5",

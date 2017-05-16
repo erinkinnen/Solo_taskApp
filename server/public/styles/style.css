@@ -1,1 +1,40 @@
+.userBtn {
+  text-align: center;
+}
 
+.cancelLink {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.lead2 {
+  font-family: 'Averia Serif Libre', cursive;
+  text-align: center;
+  font-size: 40px;
+}
+
+.lead {
+  font-family: 'Averia Serif Libre', cursive;
+  /*text-align: center;*/
+  font-size: 25px;
+}
+
+.list {
+  margin-bottom: 10px;
+}
+
+.logout {
+  margin-bottom: 5px;
+}
+
+.space {
+  margin-bottom: 2px;
+}
+
+.acct {
+  margin-bottom: 4px;
+}
+
+#cheat {
+  color: white;
+}

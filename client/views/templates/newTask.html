@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="page-header">
+        <h1 id="welcome" class="lead">Add A New Task</h1>
+      </div>
+        <form ng-submit="newTask(task)">
+          <div class="form-group">
+              <label for="taskname">Task Name:</label>
+              <input type="text" class="form-control" ng-model="task.name" />
+          </div>
+          <div class="form-group">
+              <label for="description">Task Description:</label>
+              <input type="text" class="form-control" ng-model="task.description" />
+          </div>
+
+              <input class="btn btn-primary btn-md btn-block" type="submit" name="submit" value="Create Task"/>
+              <a class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-offset-2 col-md-8 col-md-offset-2 cancelLink" href="#user">Cancel</a>
+        </form>
+    </div>
+  </div>
+</div>

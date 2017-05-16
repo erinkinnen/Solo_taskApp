@@ -1,15 +1,39 @@
-# SQL Strategy Branch
-Branched from `angular-ctrl-with-routes`. The main difference is it now uses `/strategies/user_sql.js`. See `/modules/connection.js` to set your PostGRES DB connection string. You will find a basic `CREATE TABLE` query commented out in the strategy file.
+To Start:
+npm install
 
-You'll need the `pg` module as well (just run `npm install`)
+Table data is in SQLfiles folder in parent directory.
 
-`/models/user.js` is no longer needed at all.
+To create tables in Postico:
+CREATE TABLE "assigned_tasks" (
+"id" serial primary key,
+"secondary_user_id" integer,
+"date" date,
+"task_name" varchar(25),
+"complete" boolean
+);
 
-## Branch Breakdown
-* `master:` Original lecture code with jQuery, alt static file serving, Grunt, Mongoose/Mongo
-* `angular-complete:` Angular and MongoDB version as shown to Iota cohort.
-* `sql_strategy:` Replaces MongoDB with PostGRES for storage of user data. Maintains bcrypt functionality.
-* `angular-controlled-login-intro` : Introduces Angular as the login handler. All server communication is handled in an Angular Controller and updates the route/page based on success or failure. Intended for an alternate intro lecture to Passport (as seen in angular-complete and sql_strategy).
+CREATE TABLE "secondary_user" (
+"id" serial primary key,
+"account_id" integer,
+"first_name" varchar(25),
+"last_name" varchar(25),
+"age" integer,
+"is_admin" boolen **********default false
+);
 
-# Express/Passport Lecture Starting File
-Download and run 'npm install' before the lecture as prep. In this lecture, we will build out a user registration page and allow our users to log into our application. Once they are logged in, we will see information returned to us, specific to the user.
+CREATE TABLE "tasks" (
+"id" serial primary key,
+"name" varchar(40) not null,
+"description" varchar(120),
+"duration" integer,
+"completed" boolen
+);
+
+CREATE TABLE "users" (
+"id" serial primary key,
+"username" varchar(40) not null,
+"first_name" varchar(25),
+"last_name" varchar(25),
+"password" booleanvarchar(120) not null,
+"is_admin" boolen ***********default true
+);

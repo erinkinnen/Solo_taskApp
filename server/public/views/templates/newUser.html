@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-offset-2 col-md-8 col-md-offset-2">
+
+      <div class="page-header">
+        <h1 id="welcome" class="lead">Add A New User</h1>
+      </div>
+
+        <form ng-submit="registerSecondary(secondary_user)">
+          <div class="form-group">
+              <label for="firstname">First Name:</label>
+              <input type="text" class="form-control" ng-model="secondary_user.first_name" />
+          </div>
+          <div class="form-group">
+              <label for="lastname">Last Name:</label>
+              <input type="text" class="form-control" ng-model="secondary_user.last_name" />
+          </div>
+          <div class="form-group">
+              <label for="age">Age:</label>
+              <input type="text" class="form-control" ng-model="secondary_user.age" />
+          </div>
+
+          <input class="btn btn-primary btn-md btn-block" type="submit" name="submit" value="Add User" />
+          <a class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-offset-2 col-md-8 col-md-offset-2 cancelLink" href="#user">Cancel</a>
+        </form>
+
+    </div>
+  </div>
+</div>

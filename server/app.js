@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var task = require('./routes/task');
+var secondaryUser = require('./routes/secondaryUser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -35,6 +36,7 @@ app.use(passport.session());
 // Routes
 app.use('/task', task);
 app.use('/register', register);
+app.use('/secondaryUser', secondaryUser);
 app.use('/user', user);
 app.use('/*', index);
 

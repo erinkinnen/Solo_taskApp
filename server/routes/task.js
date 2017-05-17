@@ -2,20 +2,21 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
-var pg = require('pg');
-var config = {
-  user: 'erinkinnen', //env var: PGUSER
-  database: 'SOLO_taskapp', //env var: PGDATABASE
-  password: '', //env var: PGPASSWORD
-  port: 5432, //env var: PGPORT
-  max: 10, // max number of clients in the pool
-  idleTimeoutMillis: 1500, // 1.5s // how long a client is allowed to remain idle before being closed
-};
-var pool = new pg.Pool(config);
+var pool = require('../modules/pool');
+// var pg = require('pg');
+// var config = {
+//   user: 'erinkinnen', //env var: PGUSER
+//   database: 'SOLO_taskapp', //env var: PGDATABASE
+//   password: '', //env var: PGPASSWORD
+//   port: 5432, //env var: PGPORT
+//   max: 10, // max number of clients in the pool
+//   idleTimeoutMillis: 1500, // 1.5s // how long a client is allowed to remain idle before being closed
+// };
+// var pool = new pg.Pool(config);
 
 // module with bcrypt functions
 var encryptLib = require('../modules/encryption');
-var connection = require('../modules/connection');
+// var connection = require('../modules/connection');
 
 
 // Handles request for HTML file
@@ -53,7 +54,7 @@ router.post('/', function(req, res, next) {
   };
 // console.log("task in post: ", task);
 
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -85,7 +86,7 @@ console.log("inside assignedT ask post:", req.body);
   };
 // console.log("task in post: ", task);
 
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -146,7 +147,7 @@ console.log("inside task PUT:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -178,7 +179,7 @@ console.log("inside assignedTask PUT:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);

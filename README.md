@@ -1,5 +1,6 @@
 To Start:
 npm install
+Create database- database name is
 
 Table data is in SQLfiles folder in parent directory.
 
@@ -18,7 +19,7 @@ CREATE TABLE "secondary_user" (
 "first_name" varchar(25),
 "last_name" varchar(25),
 "age" integer,
-"is_admin" boolen **********default false
+"is_admin" boolean DEFAULT FALSE
 );
 
 CREATE TABLE "tasks" (
@@ -26,7 +27,7 @@ CREATE TABLE "tasks" (
 "name" varchar(40) not null,
 "description" varchar(120),
 "duration" integer,
-"completed" boolen
+"completed" boolean
 );
 
 CREATE TABLE "users" (
@@ -34,6 +35,6 @@ CREATE TABLE "users" (
 "username" varchar(40) not null,
 "first_name" varchar(25),
 "last_name" varchar(25),
-"password" booleanvarchar(120) not null,
-"is_admin" boolen ***********default true
+"password" boolean varchar(120) not null,
+"is_admin" boolean DEFAULT TRUE
 );

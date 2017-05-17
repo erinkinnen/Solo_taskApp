@@ -1,8 +1,7 @@
 
 # Prime Solo Project : Task App, a Full-Stack Web Application
 
-[Task App](https://solotaskapp.herokuapp.com/#/home/) is a responsive web application that assists those visual thinkers who are less responsive to written lists to manage their time. It features a dynamic pie chart that visually represents tasks on a list, completed or not completed.
-Tasks are removed from the visual field as they are marked completed and the pie chart is dynamically updated.
+[Task App](https://solotaskapp.herokuapp.com/#/home/) is a mobile-first responsive web application that assists those visual thinkers who are less responsive to written lists to manage their time. It features a dynamic pie chart that visually represents tasks on a list, completed or not completed. Tasks are removed from the visual field as they are marked completed and the pie chart is dynamically updated.
 
 This project was built in two weeks as a part of my coursework at Prime Digital Academy.
 

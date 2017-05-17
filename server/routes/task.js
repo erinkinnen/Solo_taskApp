@@ -16,7 +16,7 @@ var pool = require('../modules/pool');
 
 // module with bcrypt functions
 var encryptLib = require('../modules/encryption');
-var connection = require('../modules/connection');
+// var connection = require('../modules/connection');
 
 
 // Handles request for HTML file
@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
   };
 // console.log("task in post: ", task);
 
-  pool.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -86,7 +86,7 @@ console.log("inside assignedT ask post:", req.body);
   };
 // console.log("task in post: ", task);
 
-  pool.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -147,7 +147,7 @@ console.log("inside task PUT:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-  pool.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
@@ -179,7 +179,7 @@ console.log("inside assignedTask PUT:", req.body);
     duration: req.body.duration,
     completed: req.body.completed
   };
-  pool.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);

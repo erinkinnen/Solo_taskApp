@@ -63,7 +63,7 @@ console.log("inside secondary_user post:", req.body);
     age: req.body.age
   };
 
-  pool.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);

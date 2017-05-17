@@ -1,10 +1,38 @@
-To Start:
-npm install
-Create database- database name is
 
-Table data is in SQLfiles folder in parent directory.
+# Prime Solo Project : Task App, a Full-Stack Web Application
+
+[See Task App online](https://solotaskapp.herokuapp.com/#/home/)
+
+Task App is a responsive web application that assists those visual thinkers who are less responsive to written lists to manage their time. It features a dynamic pie chart that visually represents tasks on a list, completed or not completed.
+Tasks are removed from the visual field as they are marked completed and the pie chart is dynamically updated.
+
+This project was built in two weeks as a part of my coursework at Prime Digital Academy.
+
+## To run the application on local host, follow these steps:
+
+1. Download zip file of project.
+
+2. In terminal:
+  * Run 'npm install'
+  * Run 'grunt'
+  * Run 'npm start'
+
+3. Set up local database. Table data provided in SQLfiles folder. Postico queries below.
+
+4. Open up your browser and connect to localhost:5000.
+
+## Technologies Used In this project:
+- AngularJS
+- Bootstrap
+- Node.js
+- Express.js
+- PostgreSQL
+- Passport.js
+- Chart.js
+- GruntJS
 
 To create tables in Postico:
+
 CREATE TABLE "assigned_tasks" (
 "id" serial primary key,
 "secondary_user_id" integer,

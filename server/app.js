@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
+require('dotenv').config();
 
 var passport = require('./strategies/user_sql.js');
 var session = require('express-session');

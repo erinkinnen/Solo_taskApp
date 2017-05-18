@@ -2,7 +2,6 @@ console.log('2 user_sql loaded');
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
-var connection = require('../modules/connection');
 
 var pool = require('../modules/pool');
 console.log('5 back to user_sql.js clients connected: ', connectCount);
